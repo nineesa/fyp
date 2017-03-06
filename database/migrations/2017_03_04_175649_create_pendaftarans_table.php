@@ -15,6 +15,7 @@ class CreatePendaftaransTable extends Migration
     {
         Schema::create('pendaftarans', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('penganjur');
             $table->string('program');
             $table->string('penerangan_program')->nullable();
             $table->date('tarikh');
@@ -24,6 +25,7 @@ class CreatePendaftaransTable extends Migration
             $table->string('kump_sasaran');
             $table->string('kos');
             $table->string('max_peserta');
+
             $table->integer('user_id')->unsigned();;
             $table->timestamps();
 

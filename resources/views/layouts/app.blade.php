@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'eLatihan UKM') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -36,7 +36,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'eLatihan UKM') }}
                     </a>
                 </div>
 
@@ -44,9 +44,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
+                        <li><a>|</a></li>
                         <li><a href="{{ url('/home') }}">Home</a></li>
-                        <li><a href="{{ url('/post') }}">Post</a></li>
-                        <li><a href="{{ url('/pendaftaran') }}">Pendaftaran Latihan</a></li>
+                        <li><a>|</a></li>
+                        <!-- <li><a href="{{ url('/post') }}">Post</a></li> -->
+                        <li><a href="{{ url('/pendaftaran') }}">Permohonan Latihan</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

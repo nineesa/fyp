@@ -2,7 +2,7 @@
 @section('content')
 <div class="panel panel-default">
 <div class="panel-heading">
-<h2>Borang Pendaftaran Latihan</h2>
+<h2>Borang Permohonan Latihan</h2>
 </div>
 <div class="panel-body">
 <div class="row">
@@ -11,6 +11,28 @@
 method="POST" enctype="multipart/form-data">
 {{ csrf_field() }}
 {{ method_field('PATCH') }}
+
+<div class="form-group form-group-lg has-success has-feedback">
+  <label class="col-md-5 control-label" >Maklumat Penganjur</label>
+  </div>
+
+<div class="form-group{{ $errors->has('penganjur') ? ' has-error' : '' }}">
+        <label for="penganjur" class="col-md-4 control-label">Penganjur</label>
+
+        <div class="col-md-8">
+            <input id="penganjur" type="text" class="form-control" name="penganjur" value="{{ $pendaftaran->penganjur }}" required autofocus>
+
+            @if ($errors->has('penganjur'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('penganjur') }}</strong>
+                </span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group form-group-lg has-success has-feedback">
+      <label class="col-md-5 control-label" >Maklumat Program</label>
+      </div>
 
 <div class="form-group{{ $errors->has('program') ? ' has-error' : '' }}">
         <label for="program" class="col-md-4 control-label">Program</label>

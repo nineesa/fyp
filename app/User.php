@@ -8,9 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-    protected $fillable = [
-      'name', 'phone', 'email', 'password',
-    ];
+    protected $fillable = ['name', 'phone', 'email', 'password'];
+
+
     public function post()
     {
       return $this->hasMany(Post::class);

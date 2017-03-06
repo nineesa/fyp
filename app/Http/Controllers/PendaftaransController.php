@@ -35,6 +35,7 @@ class PendaftaransController extends Controller
      */
     public function store(Request $request)
     {
+      $this->validate($request, ['penganjur' => 'required',]);
       $this->validate($request, ['program' => 'required',]);
       $this->validate($request, ['penerangan_program']);
       $this->validate($request, ['tarikh' => 'required',]);
@@ -45,6 +46,7 @@ class PendaftaransController extends Controller
       $this->validate($request, ['kos' => 'required',]);
       $this->validate($request, ['max_peserta' => 'required',]);
       $pendaftaran = new Pendaftaran;
+      $pendaftaran->penganjur = $request->penganjur;
       $pendaftaran->program = $request->program;
       $pendaftaran->penerangan_program = $request->penerangan_program;
       $pendaftaran->tarikh = $request->tarikh;
@@ -91,7 +93,7 @@ class PendaftaransController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+      $this->validate($request, ['penganjur' => 'required',]);
       $this->validate($request, ['program' => 'required',]);
       $this->validate($request, ['penerangan_program']);
       $this->validate($request, ['tarikh' => 'required',]);
@@ -102,6 +104,7 @@ class PendaftaransController extends Controller
       $this->validate($request, ['kos' => 'required',]);
       $this->validate($request, ['max_peserta' => 'required',]);
       $pendaftaran = Pendaftaran::findOrFail($id);;
+      $pendaftaran->penganjur = $request->penganjur;
       $pendaftaran->program = $request->program;
       $pendaftaran->penerangan_program = $request->penerangan_program;
       $pendaftaran->tarikh = $request->tarikh;
