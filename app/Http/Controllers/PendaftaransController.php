@@ -45,6 +45,7 @@ class PendaftaransController extends Controller
       $this->validate($request, ['kump_sasaran' => 'required',]);
       $this->validate($request, ['kos' => 'required',]);
       $this->validate($request, ['max_peserta' => 'required',]);
+      // $this->validate($request, ['status' => 'required',]);
       $pendaftaran = new Pendaftaran;
       $pendaftaran->penganjur = $request->penganjur;
       $pendaftaran->program = $request->program;
@@ -56,6 +57,7 @@ class PendaftaransController extends Controller
       $pendaftaran->kump_sasaran = $request->kump_sasaran;
       $pendaftaran->kos = $request->kos;
       $pendaftaran->max_peserta = $request->max_peserta;
+      // $pendaftaran->status = $request->status;
       $pendaftaran->user_id = Auth::user()->id;
       $pendaftaran->save();
       return redirect()->action('PendaftaransController@store')->withMessage('Program anda telah berjaya didaftarkan');
@@ -69,7 +71,8 @@ class PendaftaransController extends Controller
      */
     public function show($id)
     {
-        //
+      $pendaftaran = Pendaftaran::findOrFail($id);
+      return view('pendaftaran.viewLatihan', compact('pendaftaran'));
     }
 
     /**
@@ -78,6 +81,22 @@ class PendaftaransController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     public function catalog()
+     {
+      //  $pendaftaran = Pendaftaran::findOrFail($id);//get single product from db
+      //dd($product);
+      $pendaftarans = Pendaftaran::with('user')->paginate(5);
+      return view('pendaftaran.catalog', compact('pendaftarans'));
+     }
+
+     /**
+      * Show the form for editing the specified resource.
+      *
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+
     public function edit($id)
     {
       $pendaftaran = Pendaftaran::findOrFail($id);

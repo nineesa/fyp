@@ -25,7 +25,7 @@ class CreatePendaftaransTable extends Migration
             $table->string('kump_sasaran');
             $table->string('kos');
             $table->string('max_peserta');
-
+          
             $table->integer('user_id')->unsigned();;
             $table->timestamps();
 

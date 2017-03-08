@@ -28,9 +28,13 @@ Route::post('/post/{post}/like', 'LikesController@likesAction');
 Route::get('/pendaftaran', 'PendaftaransController@index');
 Route::get('/pendaftaran/create', 'PendaftaransController@create');
 Route::post('/pendaftaran', 'PendaftaransController@store');
-Route::get('/pendaftaran/{pendaftaran}', 'PendaftaransController@show');
+Route::get('/catalog/{pendaftaran}', 'PendaftaransController@show');
 Route::get('/pendaftaran/{pendaftaran}/edit', 'PendaftaransController@edit');
 Route::patch('/pendaftaran/{pendaftaran}', 'PendaftaransController@update');
+Route::get('/catalog', 'PendaftaransController@catalog');
+
+
+
 });
 
 Auth::routes();
