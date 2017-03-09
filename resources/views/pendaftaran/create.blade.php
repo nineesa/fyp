@@ -17,7 +17,26 @@
                             <!-- <label for="penganjur" class="col-md-4 control-label">Maklumat Penganjur</label> -->
                         </div>
 
-                      
+                        <div class="form-group">
+                                  <label class="col-md-4 control-label">Pemohon</label>
+                                <div class="col-md-8">
+                                    <td>{{ Auth::user()->name }}</td>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                      <label class="col-md-4 control-label">Telefon</label>
+                                    <div class="col-md-8">
+                                        <td>{{ Auth::user()->phone }}</td>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                          <label class="col-md-4 control-label">Emel</label>
+                                        <div class="col-md-8">
+                                            <td>{{ Auth::user()->email }}</td>
+                                        </div>
+                                    </div>
 
                     <div class="form-group{{ $errors->has('penganjur') ? ' has-error' : '' }}">
                             <label for="penganjur" class="col-md-4 control-label">Penganjur</label>
@@ -32,6 +51,9 @@
                                 @endif
                             </div>
                         </div>
+
+
+
 
                         <div class="form-group form-group-lg has-success has-feedback">
                           <label class="col-md-5 control-label" >Maklumat Program</label>
@@ -136,7 +158,7 @@
         </div>
 
         <div class="form-group{{ $errors->has('kos') ? ' has-error' : '' }}">
-        <label for="kos" class="col-md-4 control-label">Kos</label>
+        <label for="kos" class="col-md-4 control-label">Yuran</label>
 
         <div class="col-md-8">
             <input id="kos" type="text" class="form-control" name="kos" value="{{ old('kos') }}" required autofocus>
@@ -169,6 +191,7 @@
                                                     <button type="submit" class="btn btn-success">Daftar</button>
                                                 </div>
                                             </div>
+
                                         </form>
                                     </div>
                                 </div>

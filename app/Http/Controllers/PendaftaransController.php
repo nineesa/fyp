@@ -24,7 +24,8 @@ class PendaftaransController extends Controller
      */
     public function create()
     {
-        return view('pendaftaran.create');
+       $pendaftarans = Pendaftaran::with('user');
+        return view('pendaftaran.create', compact('pendaftarans'));
     }
 
     /**

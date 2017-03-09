@@ -15,8 +15,10 @@ role="button">Borang Permohonan Latihan</a></h2>
 <thead>
 <tr>
 <th>#</th>
-<th width="65%">Program</th>
+<th width="60%">Program</th>
+<th width="20%">Status Permohonan</th>
 <th width="15%">Action</th>
+
 </tr>
 </thead>
 <tbody pull-{right}>
@@ -25,6 +27,7 @@ role="button">Borang Permohonan Latihan</a></h2>
 <tr>
 <td >{{ $pendaftarans->firstItem() + $i }}</td>
 <td>{{ $pendaftaran->program }}</td>
+<td></td>
 <td>
 @if( $pendaftaran->user_id == Auth::user()->id)
 <a href="{{ action('PendaftaransController@edit', $pendaftaran->id) }}"

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'eLatihan UKM') }}</title>
+    <title>{{ config('app.name', 'e-Latihan UKM') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -36,7 +36,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'eLatihan UKM') }}
+                        {{ config('app.name', 'e-Latihan UKM') }}
                     </a>
                 </div>
 
@@ -45,7 +45,7 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                         <li><a>|</a></li>
-                        <li><a href="{{ url('/home') }}">Home</a></li>
+                        <li><a href="{{ url('/home') }}">Halaman Utama</a></li>
                         <li><a>|</a></li>
                         <!-- <li><a href="{{ url('/post') }}">Post</a></li> -->
                         <li><a href="{{ url('/pendaftaran') }}">Permohonan Latihan</a></li>
@@ -57,8 +57,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">Log Masuk</a></li>
+                            <li><a href="{{ route('register') }}">Daftar Akaun</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
