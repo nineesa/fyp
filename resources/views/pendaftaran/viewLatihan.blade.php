@@ -22,10 +22,11 @@
                 <!-- <h1>{{ $pendaftaran->program }}</h1> -->
                 <p> Penganjur  :   {{ $pendaftaran->penganjur }}</p>
                 <p>Penerangan Program  :   {{ $pendaftaran->penerangan_program }}</p>
-                <p> Tarikh  :   {{ $pendaftaran->tarikh }}</p>
-                <p> Masa  :   {{ $pendaftaran->masa }}</p>
+                <p> Tarikh Mula  :   {{ $pendaftaran->tarikh_mula }}</p>
+                <p> Tarikh Akhir  :   {{ $pendaftaran->tarikh_akhir }}</p>
+                <p> Masa Mula  :   {{ $pendaftaran->masa_mula }}</p>
+                <p> Masa Akhir  :   {{ $pendaftaran->masa_akhir }}</p>
                 <p>Lokasi  :   {{ $pendaftaran->lokasi }}</p>
-                <p>Tempoh Latihan  :   {{ $pendaftaran->tempoh_latihan }}</p>
                 <p>Kupulan Sasaran  :   {{ $pendaftaran->kump_sasaran }}</p>
                 <p>Kos  :   {{ $pendaftaran->kos }}</p>
                 <p>Maximum Peserta  :   {{ $pendaftaran->max_peserta }}</p>

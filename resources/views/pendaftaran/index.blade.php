@@ -27,7 +27,7 @@ role="button">Borang Permohonan Latihan</a></h2>
 <tr>
 <td >{{ $pendaftarans->firstItem() + $i }}</td>
 <td>{{ $pendaftaran->program }}</td>
-<td></td>
+<td>{{ $pendaftaran->status }}</td>
 <td>
 @if( $pendaftaran->user_id == Auth::user()->id)
 <a href="{{ action('PendaftaransController@edit', $pendaftaran->id) }}"

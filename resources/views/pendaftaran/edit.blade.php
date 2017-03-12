@@ -82,32 +82,60 @@ method="POST" enctype="multipart/form-data">
                             </div>
                         </div>
 
-        <div class="form-group{{ $errors->has('tarikh') ? ' has-error' : '' }}">
-        <label for="tarikh" class="col-md-4 control-label">Tarikh</label>
+        <div class="form-group{{ $errors->has('tarikh_mula') ? ' has-error' : '' }}">
+        <label for="tarikh_mula" class="col-md-4 control-label">Tarikh Mula</label>
 
         <div class="col-md-8">
-            <input id="tarikh" type="date" class="form-control" name="tarikh" value="{{ $pendaftaran->tarikh }}" required autofocus>
+            <input id="tarikh_mula" type="date" class="form-control" name="tarikh_mula" value="{{ $pendaftaran->tarikh_mula }}" required autofocus>
 
-            @if ($errors->has('tarikh'))
+            @if ($errors->has('tarikh_mula'))
                 <span class="help-block">
-                    <strong>{{ $errors->first('tarikh') }}</strong>
+                    <strong>{{ $errors->first('tarikh_mula') }}</strong>
                 </span>
             @endif
         </div>
     </div>
 
-    <div class="form-group{{ $errors->has('masa') ? ' has-error' : '' }}">
-    <label for="masa" class="col-md-4 control-label">Masa</label>
+    <div class="form-group{{ $errors->has('tarikh_akhir') ? ' has-error' : '' }}">
+    <label for="tarikh_akhir" class="col-md-4 control-label">Tarikh Akhir</label>
 
     <div class="col-md-8">
-        <input id="masa" type="time" class="form-control" name="masa" value="{{ $pendaftaran->masa }}" required autofocus>
+        <input id="tarikh_akhir" type="date" class="form-control" name="tarikh_akhir" value="{{ $pendaftaran->tarikh_akhir }}" required autofocus>
 
-        @if ($errors->has('masa'))
+        @if ($errors->has('tarikh_akhir'))
             <span class="help-block">
-                <strong>{{ $errors->first('masa') }}</strong>
+                <strong>{{ $errors->first('tarikh_akhir') }}</strong>
             </span>
         @endif
     </div>
+</div>
+
+    <div class="form-group{{ $errors->has('masa_mula') ? ' has-error' : '' }}">
+    <label for="masa_mula" class="col-md-4 control-label">Masa Mula</label>
+
+    <div class="col-md-8">
+        <input id="masa_mula" type="time" class="form-control" name="masa_mula" value="{{ $pendaftaran->masa_mula }}" required autofocus>
+
+        @if ($errors->has('masa_mula'))
+            <span class="help-block">
+                <strong>{{ $errors->first('masa_mula') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+
+<div class="form-group{{ $errors->has('masa_akhir') ? ' has-error' : '' }}">
+<label for="masa_akhir" class="col-md-4 control-label">Masa Akhir</label>
+
+<div class="col-md-8">
+    <input id="masa_akhir" type="time" class="form-control" name="masa_akhir" value="{{ $pendaftaran->masa_akhir }}" required autofocus>
+
+    @if ($errors->has('masa_akhir'))
+        <span class="help-block">
+            <strong>{{ $errors->first('masa_akhir') }}</strong>
+        </span>
+    @endif
+</div>
 </div>
 
 <div class="form-group{{ $errors->has('lokasi') ? ' has-error' : '' }}">
@@ -124,19 +152,6 @@ method="POST" enctype="multipart/form-data">
 </div>
 </div>
 
-<div class="form-group{{ $errors->has('tempoh_latihan') ? ' has-error' : '' }}">
-<label for="tempoh_latihan" class="col-md-4 control-label">Tempoh Latihan</label>
-
-<div class="col-md-8">
-<input id="tempoh_latihan" type="text" class="form-control" name="tempoh_latihan" value="{{ $pendaftaran->tempoh_latihan }}" required autofocus>
-
-@if ($errors->has('tempoh_latihan'))
-    <span class="help-block">
-        <strong>{{ $errors->first('tempoh_latihan') }}</strong>
-    </span>
-@endif
-</div>
-</div>
 
 <div class="form-group{{ $errors->has('kump_sasaran') ? ' has-error' : '' }}">
 <label for="kump_sasaran" class="col-md-4 control-label">Kumpulan Sasaran</label>

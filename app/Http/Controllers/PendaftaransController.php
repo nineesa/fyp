@@ -13,7 +13,7 @@ class PendaftaransController extends Controller
      */
     public function index()
     {
-      $pendaftarans = Pendaftaran::with('user')->paginate(5);
+      $pendaftarans = Pendaftaran::with('user')->where('user_id', Auth::user()->id)->paginate(5);
       return view('pendaftaran.index', compact('pendaftarans'));
     }
 
@@ -34,30 +34,35 @@ class PendaftaransController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
       $this->validate($request, ['penganjur' => 'required',]);
       $this->validate($request, ['program' => 'required',]);
       $this->validate($request, ['penerangan_program']);
-      $this->validate($request, ['tarikh' => 'required',]);
-      $this->validate($request, ['masa' => 'required',]);
+      $this->validate($request, ['tarikh_mula' => 'required',]);
+      $this->validate($request, ['tarikh_akhir' => 'required',]);
+      $this->validate($request, ['masa_mula' => 'required',]);
+      $this->validate($request, ['masa_akhir' => 'required',]);
       $this->validate($request, ['lokasi' => 'required',]);
-      $this->validate($request, ['tempoh_latihan' => 'required',]);
       $this->validate($request, ['kump_sasaran' => 'required',]);
       $this->validate($request, ['kos' => 'required',]);
       $this->validate($request, ['max_peserta' => 'required',]);
+      //$this->validate($request, ['status']);
       // $this->validate($request, ['status' => 'required',]);
       $pendaftaran = new Pendaftaran;
       $pendaftaran->penganjur = $request->penganjur;
       $pendaftaran->program = $request->program;
       $pendaftaran->penerangan_program = $request->penerangan_program;
-      $pendaftaran->tarikh = $request->tarikh;
-      $pendaftaran->masa = $request->masa;
+      $pendaftaran->tarikh_mula = $request->tarikh_mula;
+      $pendaftaran->tarikh_akhir = $request->tarikh_akhir;
+      $pendaftaran->masa_mula = $request->masa_mula;
+      $pendaftaran->masa_akhir = $request->masa_akhir;
       $pendaftaran->lokasi = $request->lokasi;
-      $pendaftaran->tempoh_latihan = $request->tempoh_latihan;
       $pendaftaran->kump_sasaran = $request->kump_sasaran;
       $pendaftaran->kos = $request->kos;
       $pendaftaran->max_peserta = $request->max_peserta;
+      //$pendaftaran->status = $request->status;
       // $pendaftaran->status = $request->status;
       $pendaftaran->user_id = Auth::user()->id;
       $pendaftaran->save();
@@ -87,7 +92,7 @@ class PendaftaransController extends Controller
      {
       //  $pendaftaran = Pendaftaran::findOrFail($id);//get single product from db
       //dd($product);
-      $pendaftarans = Pendaftaran::with('user')->paginate(5);
+      $pendaftarans = Pendaftaran::with('user')->where('status', 'Lulus')->paginate(5);
       return view('pendaftaran.catalog', compact('pendaftarans'));
      }
 
@@ -116,24 +121,28 @@ class PendaftaransController extends Controller
       $this->validate($request, ['penganjur' => 'required',]);
       $this->validate($request, ['program' => 'required',]);
       $this->validate($request, ['penerangan_program']);
-      $this->validate($request, ['tarikh' => 'required',]);
-      $this->validate($request, ['masa' => 'required',]);
+      $this->validate($request, ['tarikh_mula' => 'required',]);
+      $this->validate($request, ['tarikh_akhir' => 'required',]);
+      $this->validate($request, ['masa_mula' => 'required',]);
+      $this->validate($request, ['masa_akhir' => 'required',]);
       $this->validate($request, ['lokasi' => 'required',]);
-      $this->validate($request, ['tempoh_latihan' => 'required',]);
       $this->validate($request, ['kump_sasaran' => 'required',]);
       $this->validate($request, ['kos' => 'required',]);
       $this->validate($request, ['max_peserta' => 'required',]);
+
       $pendaftaran = Pendaftaran::findOrFail($id);;
       $pendaftaran->penganjur = $request->penganjur;
       $pendaftaran->program = $request->program;
       $pendaftaran->penerangan_program = $request->penerangan_program;
-      $pendaftaran->tarikh = $request->tarikh;
-      $pendaftaran->masa = $request->masa;
+      $pendaftaran->tarikh_mula = $request->tarikh_mula;
+      $pendaftaran->tarikh_akhir = $request->tarikh_akhir;
+      $pendaftaran->masa_mula = $request->masa_mula;
+      $pendaftaran->masa_akhir = $request->masa_akhir;
       $pendaftaran->lokasi = $request->lokasi;
-      $pendaftaran->tempoh_latihan = $request->tempoh_latihan;
       $pendaftaran->kump_sasaran = $request->kump_sasaran;
       $pendaftaran->kos = $request->kos;
       $pendaftaran->max_peserta = $request->max_peserta;
+
       $pendaftaran->save();
       return redirect()->action('PendaftaransController@index')->withMessage('Program anda telah berjaya dikemaskini');
     }

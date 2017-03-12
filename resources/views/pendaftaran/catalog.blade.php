@@ -16,7 +16,7 @@
 
                           <br>
                           <p> Penganjur  :  {{ $pendaftaran->penganjur }}</p>
-                          <p> Tarikh  :  {{ $pendaftaran->tarikh }}</p>
+                          <p> Tarikh  :  {{ $pendaftaran->tarikh_mula }} - {{ $pendaftaran->tarikh_akhir }}</p>
 
                           <a href="{{ url('catalog', $pendaftaran->id) }}" class="btn btn-primary">Perinci</a>
                           <br><br>
