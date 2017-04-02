@@ -115,33 +115,34 @@
                         </div>
                     </div>
 
-                        <div class="form-group{{ $errors->has('masa_mula') ? ' has-error' : '' }}">
-                        <label for="masa_mula" class="col-md-4 control-label">Masa Mula</label>
+                    <div class="form-group{{ $errors->has('masa_mula') ? ' has-error' : '' }}">
+                                            <label for="masa_mula" class="col-md-4 control-label">Masa Mula</label>
 
-                        <div class="col-md-8">
-                            <input id="masa_mula" type="time" class="form-control" name="masa_mula" value="{{ old('masa_mula') }}" required autofocus>
+                                            <div class="col-md-8">
+                                                <input id="masa_mula" type="time" class="form-control" name="masa_mula" value="{{ old('masa_mula') }}" required autofocus>
 
-                            @if ($errors->has('masa_mula'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('masa_mula') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
+                                                @if ($errors->has('masa_mula'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('masa_mula') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
 
-                    <div class="form-group{{ $errors->has('masa_akhir') ? ' has-error' : '' }}">
-                    <label for="masa_akhir" class="col-md-4 control-label">Masa Mula</label>
+                                        <div class="form-group{{ $errors->has('masa_akhir') ? ' has-error' : '' }}">
+                                        <label for="masa_akhir" class="col-md-4 control-label">Masa Mula</label>
 
-                    <div class="col-md-8">
-                        <input id="masa_akhir" type="time" class="form-control" name="masa_akhir" value="{{ old('masa_akhir') }}" required autofocus>
+                                        <div class="col-md-8">
+                                            <input id="masa_akhir" type="time" class="form-control" name="masa_akhir" value="{{ old('masa_akhir') }}" required autofocus>
 
-                        @if ($errors->has('masa_akhir'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('masa_akhir') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
+                                            @if ($errors->has('masa_akhir'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('masa_akhir') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
 
                     <div class="form-group{{ $errors->has('lokasi') ? ' has-error' : '' }}">
                     <label for="lokasi" class="col-md-4 control-label">Lokasi</label>

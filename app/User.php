@@ -2,12 +2,13 @@
 
 namespace App;
 use App\Post;
-use Illuminate\Notifications\Notifiable;
+use App\Pendaftaran;
+use App\Tempahan;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+
     protected $fillable = ['name', 'phone', 'email', 'password'];
 
 
@@ -26,4 +27,9 @@ class User extends Authenticatable
     {
       return $post->liked->contains('user_id', $this->id);
     }
+
+      public function tempahan()
+      {
+        return $this->hasMany(Tempahan::class, 'user_id');
+      }
 }

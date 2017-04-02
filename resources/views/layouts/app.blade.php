@@ -48,9 +48,13 @@
                         <li><a href="{{ url('/home') }}">Halaman Utama</a></li>
                         <li><a>|</a></li>
                         <!-- <li><a href="{{ url('/post') }}">Post</a></li> -->
-                        <li><a href="{{ url('/pendaftaran') }}">Permohonan Latihan</a></li>
+                        <li><a href="{{ url('/pendaftaran') }}">Permohonan</a></li>
                         <li><a>|</a></li>
-                        <li><a href="{{ url('/catalog') }}">Jadual Latihan</a></li>
+                        <li><a href="{{ url('/catalog') }}">Jadual</a></li>
+                        <li><a>|</a></li>
+                        <li><a href="{{ url('/listLatihan') }}">Pengesahan</a></li>
+                        <li><a>|</a></li>
+                        <li><a href="{{ url('/calender') }}">Kalender</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

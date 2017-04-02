@@ -110,7 +110,7 @@ method="POST" enctype="multipart/form-data">
     </div>
 </div>
 
-    <div class="form-group{{ $errors->has('masa_mula') ? ' has-error' : '' }}">
+<div class="form-group{{ $errors->has('masa_mula') ? ' has-error' : '' }}">
     <label for="masa_mula" class="col-md-4 control-label">Masa Mula</label>
 
     <div class="col-md-8">
@@ -137,6 +137,7 @@ method="POST" enctype="multipart/form-data">
     @endif
 </div>
 </div>
+
 
 <div class="form-group{{ $errors->has('lokasi') ? ' has-error' : '' }}">
 <label for="lokasi" class="col-md-4 control-label">Lokasi</label>

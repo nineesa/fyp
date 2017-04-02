@@ -4,8 +4,7 @@
 
 <div class="panel panel-default">
 <div class="panel-heading">
-<h2>Permohonan Latihan<a href="{{ url('/pendaftaran/create') }}" class="btn btn-info pull-right"
-role="button">Borang Permohonan Latihan</a></h2>
+<h2>Permohonan Latihan<a href="{{ url('/pendaftaran/create') }}" class="btn btn-info pull-right" role="button">Borang Permohonan Latihan</a></h2>
 </div>
 <div class="panel-body">
 <div class="row">

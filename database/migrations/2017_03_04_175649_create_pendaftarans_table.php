@@ -26,10 +26,10 @@ class CreatePendaftaransTable extends Migration
             $table->string('kump_sasaran');
             $table->string('kos');
             $table->string('max_peserta');
-            $table->enum('status',array('Sedang Diproses', 'Lulus', 'Tidak Lulus'))->default('Sedang Diproses')->nullable();
+            $table->string('status')->default('Sedang Diproses')->nullable();
 
 
-            $table->integer('user_id')->unsigned();;
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
 
             //foreign key

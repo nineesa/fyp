@@ -22,3 +22,12 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Pendaftaran::class, function (Faker\Generator $faker) {
+    return [
+        'program' => $faker->sentence(4),
+        'tarikh_mula' =>  $faker->dateTimeThisYear(),
+        'tarikh_akhir' =>  $faker->dateTimeThisMonth(),
+
+    ];
+});

@@ -32,10 +32,13 @@
                 <p>Maximum Peserta  :   {{ $pendaftaran->max_peserta }}</p>
 
                 <br>
-
+                <form action="{{ action('TempahansController@store') }}" method="POST">
+                  {{ csrf_field() }}
+                  <a href="{{ action('PendaftaransController@catalog') }}" class="btn btn-default">Cancel</a>
                     <button type="submit" class="btn btn-primary">Tempah</button>
+                    <input type="hidden" name="pendaftaran_id" value="{{ $pendaftaran->id }}">
 
-
+</form>
             </div>
         </div>
     </div>
