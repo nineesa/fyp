@@ -68,7 +68,8 @@ class PendaftaransController extends Controller
       $this->validate($request, ['kos' => 'required',]);
       $this->validate($request, ['max_peserta' => 'required',]);
       $this->validate($request, ['status']);
-      // $this->validate($request, ['status' => 'required',]);
+      // $this->attributes['status'] = 'Sedang Diproses';
+
       $pendaftaran = new Pendaftaran;
       $pendaftaran->penganjur = $request->penganjur;
       $pendaftaran->program = $request->program;
@@ -81,8 +82,8 @@ class PendaftaransController extends Controller
       $pendaftaran->kump_sasaran = $request->kump_sasaran;
       $pendaftaran->kos = $request->kos;
       $pendaftaran->max_peserta = $request->max_peserta;
-       $pendaftaran->status = $request->status;
-      // $pendaftaran->status = $request->status;
+      //$pendaftaran->status = $request->status;
+
       $pendaftaran->user_id = Auth::user()->id;
       $pendaftaran->save();
       return redirect()->action('PendaftaransController@store')->withMessage('Program anda telah berjaya didaftarkan');

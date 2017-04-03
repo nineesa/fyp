@@ -25,6 +25,7 @@ class Pendaftaran extends Model
 
       // protected $attributes = ['status' => 'Sedang Diproses'];
 
+      protected $attributes = ['status' => 'Sedang Diproses' ];
 
 
   public function user()
