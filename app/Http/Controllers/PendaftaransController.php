@@ -5,6 +5,8 @@ use App\Pendaftaran;
 use App\Tempahan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use MaddHatter\LaravelFullcalendar\Facades\Calendar;
+
 class PendaftaransController extends Controller
 {
     /**
@@ -24,20 +26,41 @@ class PendaftaransController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function calender()
+     public function calendar()
        {
-         $data =Pendaftaran::get(['program', 'tarikh_mula', 'tarikh_akhir']);
-         return Response()->json($data);
+
+         $pendaftarans = Pendaftaran::get(['program', 'tarikh_mula', 'tarikh_akhir']);
+//
+// $pendaftarans[] = \Calendar::event(
+//     'Event One', //event title
+//     false, //full day event?
+//     '2015-02-11T0800', //start time (you can also use Carbon instead of DateTime)
+//     '2015-02-12T0800', //end time (you can also use Carbon instead of DateTime)
+// 	0 //optionally, you can specify an event ID
+// );
+//
+// $pendaftarans[] = \Calendar::event(
+//     "Valentine's Day", //event title
+//     true, //full day event?
+//     new \DateTime('2015-02-14'), //start time (you can also use Carbon instead of DateTime)
+//     new \DateTime('2015-02-14'), //end time (you can also use Carbon instead of DateTime)
+// 	'stringEventId' //optionally, you can specify an event ID
+// );
+//          return view('pendaftaran.calendar', compact('pendaftarans'));
+        //  $data = Pendaftaran::get(['program', 'tarikh_mula', 'tarikh_akhir']);
+         return view('pendaftaran.calendar', compact('pendaftarans'));
+        //  return Response()->json($data);
+
 
         //  $pendaftarans = Pendaftaran::get(['program', 'tarikh_mula', 'tarikh_akhir']);
         //  return view('pendaftaran.calender', compact('pendaftarans'));
         //  return Response()->json($pendaftarans);
-        // //  return Response::json($pendaftarans);
+         return Response::json($pendaftarans);
        }
 
        /**
         * Show the form for creating a new resource.
-        *
+        *@param
         * @return \Illuminate\Http\Response
         */
 
@@ -68,7 +91,6 @@ class PendaftaransController extends Controller
       $this->validate($request, ['kos' => 'required',]);
       $this->validate($request, ['max_peserta' => 'required',]);
       $this->validate($request, ['status']);
-      // $this->attributes['status'] = 'Sedang Diproses';
 
       $pendaftaran = new Pendaftaran;
       $pendaftaran->penganjur = $request->penganjur;
@@ -82,7 +104,6 @@ class PendaftaransController extends Controller
       $pendaftaran->kump_sasaran = $request->kump_sasaran;
       $pendaftaran->kos = $request->kos;
       $pendaftaran->max_peserta = $request->max_peserta;
-      //$pendaftaran->status = $request->status;
 
       $pendaftaran->user_id = Auth::user()->id;
       $pendaftaran->save();

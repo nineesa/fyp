@@ -23,11 +23,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Pendaftaran::class, function (Faker\Generator $faker) {
-    return [
-        'program' => $faker->sentence(4),
-        'tarikh_mula' =>  $faker->dateTimeThisYear(),
-        'tarikh_akhir' =>  $faker->dateTimeThisMonth(),
-
-    ];
-});
+// $factory->define(App\Pendaftaran::class, function (Faker\Generator $faker) {
+//     return [
+//         'program' => $faker->sentence(4),
+//         'tarikh_mula' =>  $faker->dateTimeThisYear(),
+//         'tarikh_akhir' =>  $faker->dateTimeThisMonth(),
+//
+//     ];
+// });

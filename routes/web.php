@@ -15,34 +15,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => ['auth']], function() {
 Route::get('/home', 'HomeController@index');
-Route::get('/post', 'PostsController@index');
-Route::get('/post/create', 'PostsController@create');
-Route::post('/post', 'PostsController@store');
-Route::get('/post/{post}', 'PostsController@show');
-Route::get('/post/{post}/edit', 'PostsController@edit');
-Route::patch('/post/{post}', 'PostsController@update');
-Route::delete('/post/{post}/delete', 'PostsController@destroy');
-Route::post('/post/{post}/like', 'LikesController@likesAction');
-Route::get('/pendaftaran', 'PendaftaransController@index');
-Route::get('/pendaftaran/create', 'PendaftaransController@create');
-Route::post('/pendaftaran', 'PendaftaransController@store');
-Route::get('/pendaftaran/{pendaftaran}/edit', 'PendaftaransController@edit');
-Route::patch('/pendaftaran/{pendaftaran}', 'PendaftaransController@update');
 Route::get('/catalog', 'PendaftaransController@catalog');
 Route::get('/catalog/{pendaftaran}', 'PendaftaransController@show');
-Route::get('/listLatihan', 'PendaftaransController@listLatihan');
-Route::get('/sahLatihan/{pendaftaran}/sahLatihan', 'PendaftaransController@sahLatihan');
-Route::patch('/sahLatihan/{pendaftaran}', 'PendaftaransController@simpan');
-Route::get('/listLatihan', 'PendaftaransController@listLatihan');
-Route::get('/calender', 'PendaftaransController@calender');
-// Route::resource('pendaftarans', 'PendaftaransController',['only' => ['calender']]);
-Route::post('/tempahan', 'TempahansController@store' );
-
-
-});
+Route::get('/calendar', 'PendaftaransController@calendar');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+
+Route::group(['middleware' =>  ['auth', 'pengguna']], function() {
+  Route::post('/tempahan', 'TempahansController@store' );
+  Route::get('/tempahan', 'TempahansController@index');
+  Route::get('/tempahan/{tempahan}', 'TempahansController@show');
+
+});
+
+
+Route::group(['middleware' =>  ['auth', 'pentadbir']], function() {
+  Route::get('/listLatihan', 'PendaftaransController@listLatihan');
+  Route::get('/sahLatihan/{pendaftaran}/sahLatihan', 'PendaftaransController@sahLatihan');
+  Route::patch('/sahLatihan/{pendaftaran}', 'PendaftaransController@simpan');
+});
+
+Route::group(['middleware' =>  ['auth', 'penganjur']], function() {
+  Route::get('/pendaftaran', 'PendaftaransController@index');
+  Route::get('/pendaftaran/create', 'PendaftaransController@create');
+  Route::post('/pendaftaran', 'PendaftaransController@store');
+  Route::get('/pendaftaran/{pendaftaran}/edit', 'PendaftaransController@edit');
+  Route::patch('/pendaftaran/{pendaftaran}', 'PendaftaransController@update');
+});

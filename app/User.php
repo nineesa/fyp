@@ -32,4 +32,11 @@ class User extends Authenticatable
       {
         return $this->hasMany(Tempahan::class, 'user_id');
       }
+
+      public function roleCheck($role = null){
+        if ($role){
+            return $this->role == $role; //userRole kena sama dengan dalam database
+        }
+        return $this->role;
+    }
 }

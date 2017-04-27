@@ -16,7 +16,8 @@ class TempahansController extends Controller
      */
     public function index()
     {
-        //
+      $tempahans = Tempahan::with('user')->where('user_id', Auth::user()->id)->paginate(5);
+      return view('tempahan.index', compact('tempahans'));
     }
 
     /**
@@ -24,6 +25,21 @@ class TempahansController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function index1()
+     {
+       $tempahans = Tempahan::with(['pendaftaran' => function ($query) {
+      $query->where('user_id', auth()->user()->id);
+       }])->paginate();
+       return view('tempahan.penganjur', compact('tempahans'));
+     }
+
+     /**
+      * Show the form for creating a new resource.
+      *
+      * @return \Illuminate\Http\Response
+      */
+
     public function create()
     {
         //
@@ -53,7 +69,9 @@ class TempahansController extends Controller
      */
     public function show($id)
     {
-        //
+      $tempahan = Tempahan::with('pendaftaran.user')->findOrFail($id);
+    // dd($tempahan);
+     return view('tempahan.viewdetail', compact('tempahan'));
     }
 
     /**

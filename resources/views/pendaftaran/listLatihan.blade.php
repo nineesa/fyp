@@ -27,10 +27,10 @@
 <td>{{ $pendaftaran->program }}</td>
 <td>{{ $pendaftaran->status }}</td>
 <td>
-@if( $pendaftaran->user_id == Auth::user()->id)
+
 <a href="{{ action('PendaftaransController@sahLatihan', $pendaftaran->id) }}"
 class="btn btn-primary btn-sm">Perinci</a>
-@endif
+
 </td>
 </tr>
 <?php $i++ ?>

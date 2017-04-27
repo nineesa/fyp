@@ -16,6 +16,6 @@ class Tempahan extends Model
 
       public function pendaftaran()
       {
-        return $this->belongsTo(User::class, 'pendaftaran_id');
+        return $this->belongsTo(Pendaftaran::class, 'pendaftaran_id');
       }
 }
