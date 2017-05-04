@@ -3,7 +3,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h2>Perincian Latihan</h2>
+        <h2>Perincian Tempahan</h2>
     </div>
     <div class="panel-body">
       <div class="row">
@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-4">
                 <hr>
-                
+
                 <p> Penganjur  :   {{ $tempahan->pendaftaran->penganjur }}</p>
                 <p>Penerangan Program  :   {{ $tempahan->pendaftaran->penerangan_program }}</p>
                 <p> Tarikh Mula  :   {{ $tempahan->pendaftaran->tarikh_mula }}</p>
@@ -32,13 +32,7 @@
                 <p>Maximum Peserta  :   {{ $tempahan->pendaftaran->max_peserta }}</p>
 
                 <br>
-                <!-- <form action="{{ action('TempahansController@store') }}" method="POST">
-                  {{ csrf_field() }}
-                  <a href="{{ action('PendaftaransController@catalog') }}" class="btn btn-default">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Tempah</button>
-                    <input type="hidden" name="pendaftaran_id" value="{{ $pendaftaran->id }}">
-
-</form> -->
+                <a href="{{ action('TempahansController@index') }}" class="btn btn-default">Cancel</a>
             </div>
         </div>
     </div>

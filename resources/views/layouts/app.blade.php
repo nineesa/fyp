@@ -30,7 +30,8 @@
 	<div class="row header">
 		<div class="logo navbar-left">
       <br>
-      <h1><a href="{{ url('/') }}">e-Latihan </a></h1>
+        <img src="images/11.jpg"  width="250" height="70" alt="" class="img-responsive">
+      <!-- <h1><a href="{{ url('/') }}">e-Latihan </a></h1> -->
 		</div>
 		<div class="h_search navbar-right">
 			<form>
@@ -70,17 +71,36 @@
 
                         <li><a href="{{ url('/') }}">Halaman Utama</a></li>
                         <li><a>|</a></li>
-                        <!-- <li><a href="{{ url('/post') }}">Post</a></li> -->
-                        <li><a href="{{ url('/pendaftaran') }}">Permohonan</a></li>
-                        <li><a>|</a></li>
                         <li><a href="{{ url('/catalog') }}">Jadual</a></li>
-                        <li><a>|</a></li>
-                        <li><a href="{{ url('/listLatihan') }}">Pengesahan</a></li>
                         <li><a>|</a></li>
                         <li><a href="{{ url('/calendar') }}">Kalender</a></li>
                         <li><a>|</a></li>
-                        <li><a href="{{ url('/tempahan') }}">Tempahan</a></li>
-                    </ul>
+                        <li class="dropdown" style="background-color:powderblue;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pengguna<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu" style="background-color:powderblue;">
+                                <li>
+                                    <a href="{{ url('/tempahan') }}">Tempahan</a></li>
+                                    </ul>
+
+                                    <li><a>|</a></li>
+
+                        <li class="dropdown" style="background-color:powderblue;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Penganjur <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu" style="background-color:powderblue;">
+                                <li><a href="{{ url('/pendaftaran') }}">Pendaftaran Latihan</a></li>
+                                <li><a href="{{ url('/listalltempahan') }}">Senarai Tempahan</a></li>
+                                    </ul>
+</li>
+                                    <li><a>|</a></li>
+
+                        <li class="dropdown" style="background-color:powderblue;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pentadbir <span class="caret"></span></a>
+                              <ul class="dropdown-menu" role="menu" style="background-color:powderblue;">
+
+                                    <li><a href="{{ url('/listLatihan') }}">Pengesahan</a></li>
+
+                                    </ul>
+                                    </li>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
@@ -178,17 +198,40 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
-                        <!-- <li><a>|</a></li> -->
                         <li><a href="{{ url('/') }}">Halaman Utama</a></li>
-                        <li><a>|</a></li>
-                        <!-- <li><a href="{{ url('/post') }}">Post</a></li> -->
-                        <li><a href="{{ url('/pendaftaran') }}">Permohonan</a></li>
                         <li><a>|</a></li>
                         <li><a href="{{ url('/catalog') }}">Jadual</a></li>
                         <li><a>|</a></li>
-                        <li><a href="{{ url('/listLatihan') }}">Pengesahan</a></li>
-                        <li><a>|</a></li>
                         <li><a href="{{ url('/calendar') }}">Kalender</a></li>
+                        <li><a>|</a></li>
+                        <li class="dropdown" style="background-color:powderblue;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pengguna<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu" style="background-color:powderblue;">
+                                <li>
+                                    <a href="{{ url('/tempahan') }}">Tempahan</a></li>
+                                    </ul>
+
+                                    <li><a>|</a></li>
+
+                        <li class="dropdown" style="background-color:powderblue;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Penganjur <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu" style="background-color:powderblue;">
+                                <li>
+                                    <a href="{{ url('/pendaftaran') }}">Pendaftaran Latihan</a>
+
+                                  </li>
+                                    </ul>
+
+
+                                    <li><a>|</a></li>
+
+                        <li class="dropdown" style="background-color:powderblue;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pentadbir <span class="caret"></span></a>
+                              <ul class="dropdown-menu" role="menu" style="background-color:powderblue;">
+                                <li>
+                                    <a href="{{ url('/listLatihan') }}">Pengesahan</a></li>
+                                    </ul>
+                                    <li><a href="{{ url('/listalltempahan') }}">Senarai Tempahan</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

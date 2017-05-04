@@ -1,6 +1,6 @@
 <style>
 	.panel-heading{
-		background: url('../images/22.jpg') no-repeat;
+		background: url('../images/ukm1.jpg') no-repeat;
 		background-size: 100%;
 	  height: 350px;
 	}
@@ -13,7 +13,7 @@
 
 									<div class="panel panel-default">
 										<div class="panel-heading">
-											<h2>Portal Pengurusan Latihan UKM</h2>
+											<!-- <h2>Portal Pengurusan Latihan UKM</h2> -->
 											<p><span class="hide_text"> </span></p>
 											<!-- <h3 class="da-link"><a href="single-page.html" class="fa-btn btn-1 btn-1e">view more</a></h3> -->
 										</div>

@@ -17,6 +17,7 @@ class CreateTempahansTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->index()->unsigned();
             $table->integer('pendaftaran_id')->index()->unsigned();
+            $table->string('kehadiran')->default('Belum Disahkan')->nullable();
             $table->timestamps();
 
               $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

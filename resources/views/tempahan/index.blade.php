@@ -15,10 +15,11 @@
 <tr>
 <th>#</th>
 <th width="30%">Program</th>
-<th width="20%">Tarikh </th>
-<th width="20%">Masa </th>
-<th width="20%">Lokasi</th>
+<th width="15%">Tarikh </th>
+<th width="15%">Masa </th>
+<th width="15%">Lokasi</th>
 <th width="15%">Action</th>
+<th width="30%">Kehadiran</th>
 
 </tr>
 </thead>
@@ -32,12 +33,25 @@
 <td>{{  $tempahan->pendaftaran->masa_mula }}</td>
 <td>{{  $tempahan->pendaftaran->lokasi }}</td>
 <td>
-@if( $tempahan->user_id == Auth::user()->id)
-<a href="{{ action('TempahansController@show', $tempahan->id) }}"
-class="btn btn-primary btn-sm">Details</a>
-@endif
-</td>
 
+<a href="{{ action('TempahansController@show', $tempahan->id) }}" class="btn btn-primary btn-sm">Details</a>
+
+</td>
+<td>
+  <form action="{{ action('TempahansController@simpan', $tempahan->id) }}" method="PATCH">
+    {{ csrf_field() }}
+  @if ($tempahan->kehadiran == 'Belum Disahkan')
+  <button name="status" id="status" type="submit" class="btn btn-success" value="Lulus">Hadir</button>
+    </td>
+
+    <td>
+  <button name="status" id="status" type="submit" class="btn btn-danger" value="Tidak Lulus">Tidak Hadir</button>
+  </td>
+
+  @endif
+
+
+</form>
 </tr>
 <?php $i++ ?>
 @empty
