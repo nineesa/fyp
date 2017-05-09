@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\DB;
+use Charts;
+use App\Notifications\Message;
 
 class TempahansController extends Controller
 {
@@ -174,4 +176,44 @@ class TempahansController extends Controller
     {
         //
     }
+
+    public function janalaporan()
+    {
+      $chart = Charts::database(Pendaftaran::all(), 'bar', 'highcharts')
+      ->title("Jumlah Program Latihan Yang Didaftarkan Setiap Bulan")
+      ->elementLabel("Total")
+      ->dimensions(900, 500)
+      ->responsive(false)
+      ->groupByMonth('2017', true);
+
+      $char = Charts::database(Tempahan::all(), 'bar', 'highcharts')
+        ->title("Jumlah Tempahan Latihan Setiap Bulan")
+      ->elementLabel("Total")
+      ->dimensions(900, 500)
+      ->responsive(false)
+      ->groupByMonth('2017', true);
+        return view('laporan.index', ['chart' => $chart], ['char' => $char]);
+    }
+
+    public function all()
+    {
+      $tempahans = Tempahan::with('user')->paginate(5);
+      return view('tempahan.all', compact('tempahans'));
+    }
+
+    public function notification($id)
+    {
+      $tempahan = Tempahan::findOrFail($id);
+      $user=$tempahan->user;
+// dd($user);
+      // $user = auth()->user();
+
+      $user->notify(new Message());
+      return back();
+
+
+
+    }
+
+
 }

@@ -69,3 +69,17 @@ Route::resource('/tempahan', 'TempahansController');
   Route::get('/peserta', 'TempahansController@peserta');
   Route::get('/cetakpeserta', 'TempahansController@cetakpeserta');
 Route::get('/peserta2', 'TempahansController@peserta');
+Route::get('/janalaporan', 'TempahansController@janalaporan');
+Route::get('/all', 'TempahansController@all');
+Route::get('/all/{tempahan}', 'TempahansController@notification');
+
+Route::get('/test1', 'PendaftaransController@notification');
+
+
+
+
+Route::get('test', function () {
+        $timestamp = Carbon\Carbon::now();
+        $user = auth()->user();
+        $user->notify(new App\Notifications\Message());
+    })->name('email.test');

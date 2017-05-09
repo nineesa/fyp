@@ -250,4 +250,10 @@ class PendaftaransController extends Controller
     {
         //
     }
+
+    public function notification()
+    {
+
+        return view('test1');
+    }
 }
