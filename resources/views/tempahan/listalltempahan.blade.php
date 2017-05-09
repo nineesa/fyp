@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content')
 
@@ -20,34 +19,26 @@
 
 </tr>
 </thead>
-<tbody pull-{right}>
-<?php $i = 0 ?>
-@forelse($tempahans as $tempahan)
-<tr>
-<td >{{ $tempahans->firstItem() + $i }}</td>
-<td>{{  $tempahan->pendaftaran->program }}</td>
-<td>{{  $tempahan->count()}}</td>
+<tbody>
+    @foreach ($tempahans as $tempahan)
+    <tr>
+<td > {{ $loop->iteration}}</td>
+<td>{{  $tempahan->program }}</td>
+<td>{{$tempahan->total}}</td>
 <td>
-@if( $tempahan->user_id == Auth::user()->id)
 <a href="{{ action('TempahansController@peserta') }}"
 class="btn btn-primary btn-sm">Senarai Peserta</a>
-@endif
 </td>
 
-</tr>
-<?php $i++ ?>
-@empty
-<tr>
-<td colspan="6">Tiada program yang telah anda daftarkan .</td>
-</tr>
-@endforelse
-</tbody>
-</table>
-{{ $tempahans->links() }}
-</div>
-</div>
-</div>
-</div>
-</div>
-<script src="{{ asset('js/warning.js') }}"></script>
-@endsection
+    @endforeach
+
+  </tbody>
+  </table>
+
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <script src="{{ asset('js/warning.js') }}"></script>
+  @endsection

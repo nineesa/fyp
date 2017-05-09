@@ -5,7 +5,7 @@ use App\Pendaftaran;
 use App\Tempahan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use MaddHatter\LaravelFullcalendar\Facades\Calendar;
+// use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 
 class PendaftaransController extends Controller
 {
@@ -29,10 +29,16 @@ class PendaftaransController extends Controller
      public function calendar()
        {
 
-         $data = Pendaftaran::get(['program', 'tarikh_mula', 'tarikh_akhir']);
-         return Response()->json($data);
+         $pendaftarans = Pendaftaran::get(['program', 'tarikh_mula', 'tarikh_akhir']);
+        //  return view('pendaftaran.calendar')->Response()->json($pendaftarans);
+        //  return Response()->json($pendaftarans);
 
-       }
+      return view('pendaftaran.calendar', compact('pendaftarans'));
+
+  // return view('pendaftaran.calendar', ['pendaftarans' => Pendaftaran::orderBy('start_time')->get()]);
+}
+
+
 
        /**
         * Show the form for creating a new resource.

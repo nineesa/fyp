@@ -19,8 +19,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/catalog', 'PendaftaransController@catalog');
 Route::get('/catalog/{pendaftaran}', 'PendaftaransController@show');
 // Route::get('/calendar', 'PendaftaransController@calendar');
-Route::resource('pendaftarans', 'PendaftaransController',['only' => ['calendar']]);
-
+// Route::resource('pendaftarans', 'PendaftaransController',['only' => ['calendar']]);
+Route::get('/calendar', 'PendaftaransController@calendar');
 Auth::routes();
 
 
@@ -56,7 +56,7 @@ Route::resource('/tempahan', 'TempahansController');
   Route::post('/tempahan', 'TempahansController@store' );
   Route::get('/tempahan', 'TempahansController@index');
   Route::get('/tempahan/{tempahan}/viewdetail', 'TempahansController@show');
-  Route::patch('/tempahan', 'TempahansController@simpan');
+  Route::post('/tempahan/{tempahan}/simpan', 'TempahansController@simpan');
   Route::get('/listLatihan', 'PendaftaransController@listLatihan');
   Route::get('/sahLatihan/{pendaftaran}/sahLatihan', 'PendaftaransController@sahLatihan');
   Route::patch('/sahLatihan/{pendaftaran}', 'PendaftaransController@simpan');
@@ -68,3 +68,4 @@ Route::resource('/tempahan', 'TempahansController');
   Route::get('/listalltempahan', 'TempahansController@listalltempahan');
   Route::get('/peserta', 'TempahansController@peserta');
   Route::get('/cetakpeserta', 'TempahansController@cetakpeserta');
+Route::get('/peserta2', 'TempahansController@peserta');

@@ -15,11 +15,11 @@
 <tr>
 <th>#</th>
 <th width="30%">Program</th>
-<th width="15%">Tarikh </th>
-<th width="15%">Masa </th>
-<th width="15%">Lokasi</th>
-<th width="15%">Action</th>
-<th width="30%">Kehadiran</th>
+<th width="12%">Tarikh </th>
+<th width="12%">Masa </th>
+<th width="12%">Lokasi</th>
+<th width="12%">Action</th>
+<th width="40%">Kehadiran</th>
 
 </tr>
 </thead>
@@ -38,19 +38,22 @@
 
 </td>
 <td>
-  <form action="{{ action('TempahansController@simpan', $tempahan->id) }}" method="PATCH">
+  <form action="{{ action('TempahansController@simpan', $tempahan->id) }}" method="POST">
     {{ csrf_field() }}
   @if ($tempahan->kehadiran == 'Belum Disahkan')
-  <button name="status" id="status" type="submit" class="btn btn-success" value="Lulus">Hadir</button>
-    </td>
+  <button name="kehadiran" id="kehadiran" type="submit" class="btn btn-success" value="Hadir">Hadir</button>
 
-    <td>
-  <button name="status" id="status" type="submit" class="btn btn-danger" value="Tidak Lulus">Tidak Hadir</button>
+  <button name="kehadiran" id="kehadiran" type="submit" class="btn btn-danger" value="Tidak Hadir">Tidak Hadir</button>
+    <input type="hidden" name="tempahan_id" value="{{ $tempahan->id }}">
   </td>
 
   @endif
-
-
+@if ($tempahan->kehadiran == 'Hadir')
+{{$tempahan->kehadiran }}
+  @endif
+  @if ($tempahan->kehadiran == 'Tidak Hadir')
+  {{$tempahan->kehadiran }}
+    @endif
 </form>
 </tr>
 <?php $i++ ?>

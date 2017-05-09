@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'e-Latihan UKM') }}</title>
+    <title>{{ config('app.name', 'e-Latihan') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -30,13 +30,13 @@
 	<div class="row header">
 		<div class="logo navbar-left">
       <br>
-        <img src="images/11.jpg"  width="250" height="70" alt="" class="img-responsive">
+        <!-- <img src="images/VV.jpg"  width="1200" height="20%" alt="" class="img-responsive"> -->
       <!-- <h1><a href="{{ url('/') }}">e-Latihan </a></h1> -->
 		</div>
 		<div class="h_search navbar-right">
 			<form>
         <br>
-        <img src="images/logoUKM.png"  width="250" height="70" alt="" class="img-responsive">
+        <!-- <img src="images/logoUKM.png"  width="250" height="70" alt="" class="img-responsive"> -->
 				<!-- <input type="text" class="text" value="Enter text here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter text here';}">
 				<input type="submit" value="search"> -->
 			</form>

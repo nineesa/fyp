@@ -7,6 +7,7 @@ use App\Tempahan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\DB;
 
 class TempahansController extends Controller
 {
@@ -29,10 +30,16 @@ class TempahansController extends Controller
 
      public function listalltempahan()
      {
-       $tempahans = Tempahan::with(['pendaftaran' => function ($query) {
-      $query->where('user_id', auth()->user()->id);
-       }])->paginate();
-      // $tempahans = App\Tempahan::where('pendaftaran_id','1')->count();
+
+    $tempahans = DB::table('tempahans')
+    ->join('pendaftarans', 'tempahans.pendaftaran_id', '=', 'pendaftarans.id')
+    ->where('pendaftarans.user_id', '=', auth()->id())
+    ->selectRaw('count(*) as total, pendaftarans.program as program')
+    ->groupBy('pendaftaran_id')
+    ->get();
+
+    // dd($tempahans);
+
        return view('tempahan.listalltempahan', compact('tempahans'));
      }
 
@@ -42,6 +49,26 @@ class TempahansController extends Controller
       * @return \Illuminate\Http\Response
       */
 
+      public function peserta()
+      {
+       $tempahans = Tempahan::with('user')->where('user_id', Auth::user()->id)->paginate(5);
+       // dd($tempahans);
+      //  $tempahans = DB::table('tempahans')
+      //  ->join('pendaftarans', 'tempahans.pendaftaran_id', '=', 'pendaftarans.id')
+      //  ->where('pendaftarans.user_id', '=', auth()->id())
+      //  ->selectRaw('count(*) as total, pendaftarans.program as program')
+      //  ->groupBy('pendaftaran_id')
+      //  ->join('users', 'pendaftarans.user_id', '=', 'users.id')
+      //  ->get();
+        return view('tempahan.peserta', compact('tempahans'));
+      }
+
+      /**
+       * Show the form for editing the specified resource.
+       *
+       * @param  int  $id
+       * @return \Illuminate\Http\Response
+       */
     public function create()
     {
         //
@@ -72,24 +99,23 @@ class TempahansController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    //  public function simpan(Request $request, $id)
-    //  {
-    //      $this->validate($request, ['kehadiran']);
-    //      $tempahan=Tempahan::findOrFail($id);
-    //      $tempahan->user_id=Auth::user()->id;
-    //      $tempahan->pendaftaran_id=$request->pendaftaran_id;
-    //      $tempahan->kehadiran = $request->kehadiran;
-    //      $tempahan->save();
-     //
-    //      return redirect()->action('TempahansController@index')->withMessage('Kehadiran berjaya direkod');
-    //  }
-     //
-    //  /**
-    //   * Display the specified resource.
-    //   *
-    //   * @param  int  $id
-    //   * @return \Illuminate\Http\Response
-    //   */
+     public function simpan(Request $request, $id)
+     {
+         $this->validate($request, ['kehadiran']);
+         $tempahan=Tempahan::findOrFail($id);
+         $tempahan->user_id=Auth::user()->id;
+         $tempahan->kehadiran = $request->kehadiran;
+         $tempahan->save();
+
+         return redirect()->action('TempahansController@index')->withMessage('Kehadiran berjaya direkod');
+     }
+
+     /**
+      * Display the specified resource.
+      *
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
 
     public function show($id)
     {
@@ -105,19 +131,6 @@ class TempahansController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function peserta()
-     {
-      $tempahans = Tempahan::with('user')->where('user_id', Auth::user()->id)->paginate(5);
-      // dd($tempahans);
-       return view('tempahan.peserta', compact('tempahans'));
-     }
-
-     /**
-      * Show the form for editing the specified resource.
-      *
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
 
       public function cetakpeserta()
       {

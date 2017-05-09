@@ -1,39 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Kalender</title>
-        {!! Html::style('css/app.css') !!}
-        {!! Html::style('vendor/seguce92/fullcalendar/fullcalendar.min.css') !!}
-    </head>
-    <body>
-        <div class="container">
+@extends('layouts.app2')
+@section('content')
 
-            <div id='calendar'></div>
+<div class="row">
+	<div clss="col-lg-12">
+		<ol class="breadcrumb">
+			<li class="active">You are here: Home</li>
+		</ol>
+	</div>
+</div>
 
-        </div>
-    </body>
-    {!! Html::script('js/app.js') !!}
-    {!! Html::script('vendor/seguce92/fullcalendar/lib/jquery.min.js') !!}
-    {!! Html::script('vendor/seguce92/fullcalendar/lib/moment.min.js') !!}
-    {!! Html::script('vendor/seguce92/fullcalendar/fullcalendar.min.js') !!}
-    <script>
-    var BASEURL = "{{ url('/') }}";
-    $(document).ready(function() {
+<div class="row">
+	<div class="col-lg-12">
+		<div id='calendar'></div>
+	</div>
+</div>
+@endsection
+
+@section('js')
+<script src="{{ url('_asset/fullcalendar') }}/fullcalendar.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		var base_url = '{{ url('/') }}';
+
 		$('#calendar').fullCalendar({
+			weekends: true,
 			header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,basicWeek,basicDay'
+				right: 'month,agendaWeek,agendaDay'
 			},
-			defaultDate: '2017-01-01',
-			navLinks: true, // can click day/week names to navigate views
-			editable: true,
-			pendaftaranLimit: true, // allow "more" link when too many events
-			pendaftarans: BASEURL + '/pendaftarans'
+			editable: false,
+			eventLimit: true, // allow "more" link when too many events
+			events: {
+				url: base_url + '/pendaftarans',
+				error: function() {
+					alert("cannot load json");
+				}
+			}
 		});
 	});
 </script>
-</html>
+@endsection
