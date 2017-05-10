@@ -33,14 +33,14 @@ class TempahansController extends Controller
      public function listalltempahan()
      {
 
-    $tempahans = DB::table('tempahans')
-    ->join('pendaftarans', 'tempahans.pendaftaran_id', '=', 'pendaftarans.id')
-    ->where('pendaftarans.user_id', '=', auth()->id())
-    ->selectRaw('count(*) as total, pendaftarans.program as program')
-    ->groupBy('pendaftaran_id')
-    ->get();
+       $tempahans = DB::table('tempahans')
+       ->join('pendaftarans', 'tempahans.pendaftaran_id', '=', 'pendaftarans.id')
+       ->where('pendaftarans.user_id', '=', auth()->id())
+       ->selectRaw('count(*) as total, pendaftarans.program as program')
+       ->groupBy('pendaftaran_id')
+       ->join('users', 'pendaftarans.user_id', '=', 'users.id')
+       ->get();
 
-    // dd($tempahans);
 
        return view('tempahan.listalltempahan', compact('tempahans'));
      }
@@ -51,17 +51,23 @@ class TempahansController extends Controller
       * @return \Illuminate\Http\Response
       */
 
-      public function peserta()
+      public function peserta($program)
       {
-       $tempahans = Tempahan::with('user')->where('user_id', Auth::user()->id)->paginate(5);
+      //  $tempahans = Tempahan::with('user')->where('user_id', Auth::user()->id)->paginate(5);
        // dd($tempahans);
+
+      $pendaftaran = Pendaftaran::where('program', $program)->first();
+
+      $tempahans = Tempahan::where('pendaftaran_id', $pendaftaran->id)->get();
+
+
       //  $tempahans = DB::table('tempahans')
       //  ->join('pendaftarans', 'tempahans.pendaftaran_id', '=', 'pendaftarans.id')
-      //  ->where('pendaftarans.user_id', '=', auth()->id())
-      //  ->selectRaw('count(*) as total, pendaftarans.program as program')
-      //  ->groupBy('pendaftaran_id')
       //  ->join('users', 'pendaftarans.user_id', '=', 'users.id')
+      //  ->where('pendaftarans.user_id', '=', auth()->id())
+      //  ->groupBy('pendaftaran_id')
       //  ->get();
+
         return view('tempahan.peserta', compact('tempahans'));
       }
 
@@ -134,9 +140,12 @@ class TempahansController extends Controller
      */
 
 
-      public function cetakpeserta()
+      public function cetakpeserta($program)
       {
-        $tempahans = Tempahan::with('user')->paginate(5);
+        $pendaftaran = Pendaftaran::where('program', $program)->first();
+
+        $tempahans = Tempahan::where('pendaftaran_id', $pendaftaran->id)->get();
+        // $tempahans = Tempahan::with('user')->paginate(5);
          $pdf = app('dompdf.wrapper');
         $pdf->loadView('tempahan.cetakpeserta',compact('tempahans'));
         return $pdf->stream('SenaraiPeserta.pdf');
@@ -205,11 +214,18 @@ class TempahansController extends Controller
     {
       $tempahan = Tempahan::findOrFail($id);
       $user=$tempahan->user;
+      $namapeserta=$tempahan->user->name;
+      $program=$tempahan->pendaftaran->program;
+      $tarikh_mula=$tempahan->pendaftaran->tarikh_mula;
+      $tarikh_akhir=$tempahan->pendaftaran->tarikh_akhir;
+      $masa_mula=$tempahan->pendaftaran->masa_mula;
+      $masa_akhir=$tempahan->pendaftaran->masa_akhir;
+      $lokasi=$tempahan->pendaftaran->lokasi;
 // dd($user);
       // $user = auth()->user();
 
-      $user->notify(new Message());
-      return back();
+      $user->notify(new Message($namapeserta, $program, $tarikh_mula, $tarikh_akhir, $masa_mula, $masa_akhir, $lokasi));
+      return back()->withMessage('Emel berjaya dihantar');
 
 
 

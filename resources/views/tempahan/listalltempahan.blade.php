@@ -26,8 +26,7 @@
 <td>{{  $tempahan->program }}</td>
 <td>{{$tempahan->total}}</td>
 <td>
-<a href="{{ action('TempahansController@peserta') }}"
-class="btn btn-primary btn-sm">Senarai Peserta</a>
+<a href="{{ route('tempahan.peserta', $tempahan->program)}}" class="btn btn-primary btn-sm">Senarai Peserta</a>
 </td>
 
     @endforeach

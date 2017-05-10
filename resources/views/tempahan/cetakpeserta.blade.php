@@ -92,21 +92,15 @@
                             </tr>
                         </thead>
                         <tbody pull-{right}>
-                                                    <?php $i = 0 ?>
-                                                    @forelse($tempahans as $tempahan)
-                                                    <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{  $tempahan->user->name }}</td>
-                                                    <td>{{  $tempahan->kehadiran }}</td>
 
-                                                        </tr>
-                                                      <?php $i++ ?>
-                                                    @empty
-                                                    <tr>
-                                                        <td colspan="6">Tiada peserta yang telah berdaftar.</td>
-                                                    </tr>
+                          @foreach ($tempahans as $tempahan)
+                          <tr>
+                      <td > {{ $loop->iteration}}</td>
+                      <td>{{  $tempahan->user->name }}</td>
+                      <td>{{$tempahan->kehadiran}}</td>
 
-                                                    @endforelse
+
+                          @endforeach
                                                 </tbody>
  </table>
 <br/><br/>

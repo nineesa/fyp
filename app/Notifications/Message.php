@@ -10,6 +10,13 @@ use Illuminate\Notifications\Messages\MailMessage;
 class Message extends Notification
 {
     use Queueable;
+    protected $namapeserta;
+    protected $program;
+    protected $tarikh_mula;
+    protected $tarikh_akhir;
+    protected $masa_mula;
+    protected $masa_akhir;
+    protected $lokasi;
     protected $timestamp;
 
     /**
@@ -17,9 +24,15 @@ class Message extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($namapeserta, $program, $tarikh_mula, $tarikh_akhir, $masa_mula, $masa_akhir, $lokasi)
     {
-        //  $this->timestamp = $timestamp;
+      $this->namapeserta= $namapeserta;
+      $this->program= $program;
+      $this->tarikh_mula=$tarikh_mula;
+      $this->tarikh_akhir=$tarikh_akhir;
+      $this->masa_mula=$masa_mula;
+      $this->masa_akhir=$masa_akhir;
+      $this->lokasi=$lokasi;
     }
 
     /**
@@ -44,9 +57,13 @@ class Message extends Notification
 
 
 return (new MailMessage)
-              // ->greeting("Hello {$this->program}")
-            // ->line("{$this->$timestamp}")
-            ->line('Thank you for using our application!');
+            ->greeting("Hai {$this->namapeserta} ,")
+            ->line("Sukacitanya dimaklumkan bahawa anda telah mendaftar bagi program {$this->program} yang akan diadakan seperti ketetapan dibawah :")
+            ->line("Tarikh: {$this->tarikh_mula} - {$this->tarikh_akhir}")
+            ->line("Masa: {$this->masa_mula} - {$this->masa_akhir}")
+            ->line("Lokasi: {$this->lokasi} ")
+            ->line("Sila sahkan kehadiran anda sebelum menghadiri program melalui Portal e-Latihan !")
+            ->line("Terima kasih");
     }
 
     /**

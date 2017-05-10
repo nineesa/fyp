@@ -66,15 +66,17 @@ Route::resource('/tempahan', 'TempahansController');
   Route::get('/pendaftaran/{pendaftaran}/edit', 'PendaftaransController@edit');
   Route::patch('/pendaftaran/{pendaftaran}', 'PendaftaransController@update');
   Route::get('/listalltempahan', 'TempahansController@listalltempahan');
-  Route::get('/peserta', 'TempahansController@peserta');
-  Route::get('/cetakpeserta', 'TempahansController@cetakpeserta');
-Route::get('/peserta2', 'TempahansController@peserta');
+  // Route::get('/peserta', 'TempahansController@peserta');
+  // Route::get('/cetakpeserta', 'TempahansController@cetakpeserta');
+// Route::get('/peserta2', 'TempahansController@peserta');
 Route::get('/janalaporan', 'TempahansController@janalaporan');
 Route::get('/all', 'TempahansController@all');
 Route::get('/all/{tempahan}', 'TempahansController@notification');
 
 Route::get('/test1', 'PendaftaransController@notification');
 
+Route::get('/tempahan/{program}/peserta', 'TempahansController@peserta')->name('tempahan.peserta');
+Route::get('/cetakpeserta', 'TempahansController@cetakpeserta');
 
 
 
