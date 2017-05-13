@@ -3,7 +3,8 @@
 
 <div class="panel panel-default">
 <div class="panel-heading">
-<h2>Tempahan<a href="{{ url('/cetakpeserta') }}" class="btn btn-info pull-right" role="button">Cetak</a></h2>
+<h2>Senarai Peserta</h2>
+
 </div>
 <div class="panel-body">
 <div class="row">
@@ -21,17 +22,18 @@
 </thead>
 <tbody>
     @foreach ($tempahans as $tempahan)
+
     <tr>
 <td > {{ $loop->iteration}}</td>
 <td>{{  $tempahan->user->name }}</td>
 <td>{{$tempahan->kehadiran}}</td>
 <td>
+
   <form class="" action="">
             <!-- <button type="submit" name="button">Send</button> -->
-            <a href="{{ action('TempahansController@notification', $tempahan->id) }}" class="btn btn-success" role="button">Hantar Email</a>
+            <a href="{{ action('TempahansController@notification', $tempahan->id) }}" class="btn btn-success btn-sm" role="button">Hantar Email</a>
         </form>
   </td>
-
     @endforeach
 
   </tbody>

@@ -17,8 +17,8 @@
         <table class="table table-bordered" border="1" style="border-collapse: collapse; width: 80%; border-color: #adadad;">
     <thead style="">
     <tr>
-       <td width="40%" style="text-align: right; font-size: 18px;padding: 10px;"> Laporan Latihan :
-         <a href="{{ url('/laporanbarang') }}" target="_blank" class="btn btn-primary">Senarai Program Latihan</a></td>
+       <td width="40%" style="text-align: right; font-size: 18px;padding: 10px;"> Laporan Program
+         <a href="{{ url('/listLatihan') }}" class="btn btn-primary"> Senarai Program</a></td>
         <td width="30%" style="text-align: left; font-size: 18px; font-weight: bold; padding: 10px;">
             <html lang="en">
     <head>
@@ -45,7 +45,7 @@
 
     <tr>
        <td width="40%" style="text-align: right; font-size: 18px;padding: 10px;"> Laporan Tempahan :
-         <a href="{{ url('/laporantempahan') }}" target="_blank" class="btn btn-primary">Senarai Tempahan</a></td>
+         <a href="{{ url('/all') }}" target="_blank" class="btn btn-primary">Senarai Tempahan</a></td>
 
        <td width="30%" style="text-align: left; font-size: 18px; font-weight: bold; padding: 10px;">
             <html lang="en">

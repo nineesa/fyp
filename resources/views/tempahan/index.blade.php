@@ -41,9 +41,9 @@
   <form action="{{ action('TempahansController@simpan', $tempahan->id) }}" method="POST">
     {{ csrf_field() }}
   @if ($tempahan->kehadiran == 'Belum Disahkan')
-  <button name="kehadiran" id="kehadiran" type="submit" class="btn btn-success" value="Hadir">Hadir</button>
+  <button name="kehadiran" id="kehadiran" type="submit" class="btn btn-success btn-sm" value="Hadir">Hadir</button>
 
-  <button name="kehadiran" id="kehadiran" type="submit" class="btn btn-danger" value="Tidak Hadir">Tidak Hadir</button>
+  <button name="kehadiran" id="kehadiran" type="submit" class="btn btn-danger btn-sm" value="Tidak Hadir">Tidak Hadir</button>
     <input type="hidden" name="tempahan_id" value="{{ $tempahan->id }}">
   </td>
 

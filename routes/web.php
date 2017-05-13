@@ -21,6 +21,15 @@ Route::get('/catalog/{pendaftaran}', 'PendaftaransController@show');
 // Route::get('/calendar', 'PendaftaransController@calendar');
 // Route::resource('pendaftarans', 'PendaftaransController',['only' => ['calendar']]);
 Route::get('/calendar', 'PendaftaransController@calendar');
+Route::get('/api', function() {
+    $pendaftarans = DB::table('pendaftarans')->select('id','penganjur', 'program', 'penerangan_program', 'tarikh_mula', 'tarikh_akhir', 'masa_mula as start', 'masa_akhir as end', 'lokasi', 'kump_sasaran', 'max_peserta', 'status')->get();
+    foreach($pendaftarans as $pendaftaran)
+    {
+        $pendaftaran->program = $pendaftaran->program;
+        $pendaftaran->url = url('pendaftaran/' .$pendaftaran->id);
+    }
+    return $pendaftarans;
+  });
 Auth::routes();
 
 
@@ -76,7 +85,8 @@ Route::get('/all/{tempahan}', 'TempahansController@notification');
 Route::get('/test1', 'PendaftaransController@notification');
 
 Route::get('/tempahan/{program}/peserta', 'TempahansController@peserta')->name('tempahan.peserta');
-Route::get('/cetakpeserta', 'TempahansController@cetakpeserta');
+
+Route::get('/cetakpeserta/{program}', 'TempahansController@cetakpeserta')->name('tempahan.cetakpeserta');
 
 
 

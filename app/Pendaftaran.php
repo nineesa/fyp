@@ -25,9 +25,6 @@ class Pendaftaran extends Model
 
       protected $attributes = ['status' => 'Sedang Diproses' ];
 
-
-      // protected $dates = ['tarikh_mula', 'tarikh_akhir'];
-
           /**
            * Get the event's id number
            *
@@ -36,45 +33,6 @@ class Pendaftaran extends Model
           public function getId() {
       		return $this->id;
       	}
-
-        
-          // public function getTitle()
-          // {
-          //     return $this->program;
-          // }
-          //
-          // // /**
-          // //  * Is it an all day event?
-          // //  *
-          // //  * @return bool
-          // //  */
-          // // public function isAllDay()
-          // // {
-          // //     return (bool)$this->all_day;
-          // // }
-          //
-          // /**
-          //  * Get the start time
-          //  *
-          //  * @return DateTime
-          //  */
-          // public function getStart()
-          // {
-          //     return $this->tarikh_mula;
-          // }
-          //
-          // /**
-          //  * Get the end time
-          //  *
-          //  * @return DateTime
-          //  */
-          // public function getEnd()
-          // {
-          //     return $this->tarikh_akhir;
-          // }
-          //
-          //
-          //
 
   public function user()
   {
@@ -85,7 +43,4 @@ class Pendaftaran extends Model
   {
     return $this->hasMany(Tempahan::class, 'tempahan_id');
   }
-
-
-
 }

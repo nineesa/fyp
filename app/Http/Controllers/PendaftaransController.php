@@ -29,17 +29,14 @@ class PendaftaransController extends Controller
      public function calendar()
        {
 
-         $pendaftarans = Pendaftaran::get(['program', 'tarikh_mula', 'tarikh_akhir']);
+        //  $pendaftarans = Pendaftaran::get(['program', 'tarikh_mula', 'tarikh_akhir']);
         //  return view('pendaftaran.calendar')->Response()->json($pendaftarans);
         //  return Response()->json($pendaftarans);
 
-      return view('pendaftaran.calendar', compact('pendaftarans'));
+      return view('pendaftaran.calendar');
 
   // return view('pendaftaran.calendar', ['pendaftarans' => Pendaftaran::orderBy('start_time')->get()]);
 }
-
-
-
        /**
         * Show the form for creating a new resource.
         *@param
@@ -243,8 +240,6 @@ class PendaftaransController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-
 
     public function destroy($id)
     {

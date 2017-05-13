@@ -63,9 +63,9 @@
     </tr>
     <tr>
         <td colspan="2" style="background: #F1F1F1;padding: 14px;">
-            <p style="margin: 0px; font-size: 14px;">
+            <!-- <p style="margin: 0px; font-size: 14px;">
                 Nama Program :  <br>
-            </p>
+            </p> -->
         </td>
     </tr>
     <tr>
@@ -74,8 +74,8 @@
     </tr>
     <tr>
         <td>
-            <b>Penganjur:</b><br>
-            {{ Auth::user() ->name }}<br>
+            <!-- <b>Penganjur:</b><br>
+            {{ Auth::user() ->name }}<br> -->
 
         </td>
         </td>
@@ -101,6 +101,7 @@
 
 
                           @endforeach
+
                                                 </tbody>
  </table>
 <br/><br/>

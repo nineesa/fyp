@@ -14,8 +14,9 @@
 <thead>
 <tr>
 <th>#</th>
-<th width="50%">Program</th>
 <th width="50%">Nama </th>
+<th width="40%">Program</th>
+
 
 
 </tr>
@@ -25,14 +26,10 @@
 @forelse($tempahans as $tempahan)
 <tr>
 <td >{{ $tempahans->firstItem() + $i }}</td>
-<td>{{  $tempahan->pendaftaran->program }}</td>
 <td>{{  $tempahan->user->name }} </td>
-<td>
-  <form class="" action="">
-            <!-- <button type="submit" name="button">Send</button> -->
-            <a href="{{ action('TempahansController@notification', $tempahan->id) }}" class="btn btn-success" role="button">Send</a>
-        </form>
-  </td>
+<td>{{  $tempahan->pendaftaran->program }}</td>
+
+
 </tr>
 <?php $i++ ?>
 @empty

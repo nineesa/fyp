@@ -33,7 +33,7 @@
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			events: {
-				url: base_url + '/pendaftarans',
+				url: base_url + '/api',
 				error: function() {
 					alert("cannot load json");
 				}
