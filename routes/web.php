@@ -16,17 +16,18 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index');
+// Route::resource('/pendaftaran', 'PendaftaransController');
 Route::get('/catalog', 'PendaftaransController@catalog');
 Route::get('/catalog/{pendaftaran}', 'PendaftaransController@show');
 // Route::get('/calendar', 'PendaftaransController@calendar');
 // Route::resource('pendaftarans', 'PendaftaransController',['only' => ['calendar']]);
 Route::get('/calendar', 'PendaftaransController@calendar');
 Route::get('/api', function() {
-    $pendaftarans = DB::table('pendaftarans')->select('id','penganjur', 'program', 'penerangan_program', 'tarikh_mula', 'tarikh_akhir', 'masa_mula as start', 'masa_akhir as end', 'lokasi', 'kump_sasaran', 'max_peserta', 'status')->get();
+    $pendaftarans = DB::table('pendaftarans')->select('id','penganjur', 'program', 'penerangan_program', 'masa_mula as start', 'masa_akhir as end', 'lokasi', 'kump_sasaran', 'max_peserta', 'status')->get();
     foreach($pendaftarans as $pendaftaran)
     {
-        $pendaftaran->program = $pendaftaran->program;
-        $pendaftaran->url = url('pendaftaran/' .$pendaftaran->id);
+        $pendaftaran->title= $pendaftaran->program;
+        $pendaftaran->url = url('pendaftaran/viewLatihan' .$pendaftaran->id);
     }
     return $pendaftarans;
   });

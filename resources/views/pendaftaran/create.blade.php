@@ -87,61 +87,41 @@
                                                 </div>
                                             </div>
 
-                            <div class="form-group{{ $errors->has('tarikh_mula') ? ' has-error' : '' }}">
-                            <label for="tarikh_mula" class="col-md-4 control-label">Tarikh Mula</label>
 
-                            <div class="col-md-8">
-                                <input id="tarikh_mula" type="date" class="form-control" name="tarikh_mula" value="{{ old('tarikh_mula') }}" required autofocus>
-
-                                @if ($errors->has('tarikh_mula'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('tarikh_mula') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('tarikh_akhir') ? ' has-error' : '' }}">
-                        <label for="tarikh_akhir" class="col-md-4 control-label">Tarikh Akhir</label>
-
-                        <div class="col-md-8">
-                            <input id="tarikh_akhir" type="date" class="form-control" name="tarikh_akhir" value="{{ old('tarikh_akhir') }}" required autofocus>
-
-                            @if ($errors->has('tarikh_akhir'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('tarikh_akhir') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="form-group{{ $errors->has('masa_mula') ? ' has-error' : '' }}">
-                                            <label for="masa_mula" class="col-md-4 control-label">Masa Mula</label>
+                    <!-- <div class="form-group{{ $errors->has('time') ? ' has-error' : '' }}">
+                                            <label for="time" class="col-md-4 control-label">Masa</label>
 
                                             <div class="col-md-8">
-                                                <input id="masa_mula" type="time" class="form-control" name="masa_mula" value="{{ old('masa_mula') }}" required autofocus>
-
-                                                @if ($errors->has('masa_mula'))
+                                                <input type="text" class="form-control" name="time" value="{{ old('time') }}" required autofocus>
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                                @if ($errors->has('time'))
                                                     <span class="help-block">
-                                                        <strong>{{ $errors->first('masa_mula') }}</strong>
+                                                        <strong>{{ $errors->first('time') }}</strong>
                                                     </span>
                                                 @endif
                                             </div>
-                                        </div>
+                                        </div> -->
 
-                                        <div class="form-group{{ $errors->has('masa_akhir') ? ' has-error' : '' }}">
-                                        <label for="masa_akhir" class="col-md-4 control-label">Masa Mula</label>
+                                        <div class="form-group">
+            @if($errors->has('time')) has-error @endif
+                <label  for="time" class="col-md-4 control-label">Masa</label>
+                <div class="input-group" class="col-md-8">
 
-                                        <div class="col-md-8">
-                                            <input id="masa_akhir" type="time" class="form-control" name="masa_akhir" value="{{ old('masa_akhir') }}" required autofocus>
+                    <input type="text" class="form-control" name="time" placeholder="Select your time" value="{{ old('time') }}" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                @if ($errors->has('time'))
+                    <p class="help-block"><span class="glyphicon glyphicon-exclamation-sign"></span>
+                    {{ $errors->first('time') }}
+                    </p>
+                @endif
+            </div>
 
-                                            @if ($errors->has('masa_akhir'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('masa_akhir') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
+
 
 
                     <div class="form-group{{ $errors->has('lokasi') ? ' has-error' : '' }}">
@@ -214,4 +194,6 @@
                                 </div>
                             </div>
                         </div>
+
+
                         @endsection

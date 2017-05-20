@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Pendaftaran;
 use App\Tempahan;
 use Illuminate\Http\Request;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 // use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 
@@ -28,12 +29,16 @@ class PendaftaransController extends Controller
 
      public function calendar()
        {
+         $data = [
+         			
+         			'pendaftarans'	 => Pendaftaran::orderBy('masa_mula')->get(),
+         		];
 
         //  $pendaftarans = Pendaftaran::get(['program', 'tarikh_mula', 'tarikh_akhir']);
         //  return view('pendaftaran.calendar')->Response()->json($pendaftarans);
         //  return Response()->json($pendaftarans);
 
-      return view('pendaftaran.calendar');
+      return view('pendaftaran.calendar', $data);
 
   // return view('pendaftaran.calendar', ['pendaftarans' => Pendaftaran::orderBy('start_time')->get()]);
 }
@@ -61,24 +66,19 @@ class PendaftaransController extends Controller
       $this->validate($request, ['penganjur' => 'required',]);
       $this->validate($request, ['program' => 'required',]);
       $this->validate($request, ['penerangan_program']);
-      $this->validate($request, ['tarikh_mula' => 'required',]);
-      $this->validate($request, ['tarikh_akhir' => 'required',]);
-      $this->validate($request, ['masa_mula' => 'required',]);
-      $this->validate($request, ['masa_akhir' => 'required',]);
+      $this->validate($request, ['time' => 'required',]);
       $this->validate($request, ['lokasi' => 'required',]);
       $this->validate($request, ['kump_sasaran' => 'required',]);
       $this->validate($request, ['kos' => 'required',]);
       $this->validate($request, ['max_peserta' => 'required',]);
       $this->validate($request, ['status']);
-
+      $time = explode(" - ", $request->input('time'));
       $pendaftaran = new Pendaftaran;
       $pendaftaran->penganjur = $request->penganjur;
       $pendaftaran->program = $request->program;
       $pendaftaran->penerangan_program = $request->penerangan_program;
-      $pendaftaran->tarikh_mula = $request->tarikh_mula;
-      $pendaftaran->tarikh_akhir = $request->tarikh_akhir;
-      $pendaftaran->masa_mula = $request->masa_mula;
-      $pendaftaran->masa_akhir = $request->masa_akhir;
+      $pendaftaran->masa_mula = $this->change_date_format($time[0]);
+      $pendaftaran->masa_akhir = $this->change_date_format($time[1]);
       $pendaftaran->lokasi = $request->lokasi;
       $pendaftaran->kump_sasaran = $request->kump_sasaran;
       $pendaftaran->kos = $request->kos;
@@ -99,6 +99,7 @@ class PendaftaransController extends Controller
     public function show($id)
     {
       $pendaftaran = Pendaftaran::findOrFail($id);
+
       return view('pendaftaran.viewLatihan', compact('pendaftaran'));
     }
 
@@ -140,6 +141,8 @@ class PendaftaransController extends Controller
     public function edit($id)
     {
       $pendaftaran = Pendaftaran::findOrFail($id);
+      $pendaftaran->masa_mula =  $this->change_date_format_fullcalendar($pendaftaran->masa_mula);
+		  $pendaftaran->masa_akhir =  $this->change_date_format_fullcalendar($pendaftaran->masa_akhir);
       return view('pendaftaran.edit', compact('pendaftaran'));
     }
 
@@ -154,6 +157,8 @@ class PendaftaransController extends Controller
      public function sahLatihan($id)
      {
        $pendaftaran = Pendaftaran::findOrFail($id);
+       $pendaftaran->masa_mula =  $this->change_date_format_fullcalendar($pendaftaran->masa_mula);
+ 		  $pendaftaran->masa_akhir =  $this->change_date_format_fullcalendar($pendaftaran->masa_akhir);
        return view('pendaftaran.sahLatihan', compact('pendaftaran'));
      }
 
@@ -170,23 +175,19 @@ class PendaftaransController extends Controller
         $this->validate($request, ['penganjur' => 'required',]);
         $this->validate($request, ['program' => 'required',]);
         $this->validate($request, ['penerangan_program']);
-        $this->validate($request, ['tarikh_mula' => 'required',]);
-        $this->validate($request, ['tarikh_akhir' => 'required',]);
-        $this->validate($request, ['masa_mula' => 'required',]);
-        $this->validate($request, ['masa_akhir' => 'required',]);
+        $this->validate($request, ['time' => 'required',]);
         $this->validate($request, ['lokasi' => 'required',]);
         $this->validate($request, ['kump_sasaran' => 'required',]);
         $this->validate($request, ['kos' => 'required',]);
         $this->validate($request, ['max_peserta' => 'required',]);
         $this->validate($request, ['status']);
+          $time = explode(" - ", $request->input('time'));
         $pendaftaran = Pendaftaran::findOrFail($id);;
         $pendaftaran->penganjur = $request->penganjur;
         $pendaftaran->program = $request->program;
         $pendaftaran->penerangan_program = $request->penerangan_program;
-        $pendaftaran->tarikh_mula = $request->tarikh_mula;
-        $pendaftaran->tarikh_akhir = $request->tarikh_akhir;
-        $pendaftaran->masa_mula = $request->masa_mula;
-        $pendaftaran->masa_akhir = $request->masa_akhir;
+        $pendaftaran->masa_mula = $this->change_date_format($time[0]);
+        $pendaftaran->masa_akhir = $this->change_date_format($time[1]);
         $pendaftaran->lokasi = $request->lokasi;
         $pendaftaran->kump_sasaran = $request->kump_sasaran;
         $pendaftaran->kos = $request->kos;
@@ -208,23 +209,19 @@ class PendaftaransController extends Controller
       $this->validate($request, ['penganjur' => 'required',]);
       $this->validate($request, ['program' => 'required',]);
       $this->validate($request, ['penerangan_program']);
-      $this->validate($request, ['tarikh_mula' => 'required',]);
-      $this->validate($request, ['tarikh_akhir' => 'required',]);
-      $this->validate($request, ['masa_mula' => 'required',]);
-      $this->validate($request, ['masa_akhir' => 'required',]);
+      $this->validate($request, ['time' => 'required',]);
       $this->validate($request, ['lokasi' => 'required',]);
       $this->validate($request, ['kump_sasaran' => 'required',]);
       $this->validate($request, ['kos' => 'required',]);
       $this->validate($request, ['max_peserta' => 'required',]);
+      $time = explode(" - ", $request->input('time'));
       //$this->validate($request, ['status']);
       $pendaftaran = Pendaftaran::findOrFail($id);;
       $pendaftaran->penganjur = $request->penganjur;
       $pendaftaran->program = $request->program;
       $pendaftaran->penerangan_program = $request->penerangan_program;
-      $pendaftaran->tarikh_mula = $request->tarikh_mula;
-      $pendaftaran->tarikh_akhir = $request->tarikh_akhir;
-      $pendaftaran->masa_mula = $request->masa_mula;
-      $pendaftaran->masa_akhir = $request->masa_akhir;
+      $pendaftaran->masa_mula = $this->change_date_format($time[0]);
+      $pendaftaran->masa_akhir = $this->change_date_format($time[1]);
       $pendaftaran->lokasi = $request->lokasi;
       $pendaftaran->kump_sasaran = $request->kump_sasaran;
       $pendaftaran->kos = $request->kos;
@@ -251,4 +248,31 @@ class PendaftaransController extends Controller
 
         return view('test1');
     }
+
+    public function change_date_format($date)
+    {
+        $time = DateTime::createFromFormat('d/m/Y H:i:s', $date);
+        return $time->format('Y-m-d H:i:s');
+    }
+
+    public function change_date_format_fullcalendar($date)
+    {
+        $time = DateTime::createFromFormat('Y-m-d H:i:s', $date);
+        return $time->format('d/m/Y H:i:s');
+    }
+
+    public function format_interval(\DateInterval $interval)
+    {
+        $result = "";
+        if ($interval->y) { $result .= $interval->format("%y year(s) "); }
+        if ($interval->m) { $result .= $interval->format("%m month(s) "); }
+        if ($interval->d) { $result .= $interval->format("%d day(s) "); }
+        if ($interval->h) { $result .= $interval->format("%h hour(s) "); }
+        if ($interval->i) { $result .= $interval->format("%i minute(s) "); }
+        if ($interval->s) { $result .= $interval->format("%s second(s) "); }
+
+        return $result;
+    }
+
+
 }

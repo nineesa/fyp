@@ -14,10 +14,10 @@
 <thead>
 <tr>
 <th>#</th>
-<th width="30%">Program</th>
-<th width="12%">Tarikh </th>
-<th width="12%">Masa </th>
-<th width="12%">Lokasi</th>
+<th width="25%">Program</th>
+<th width="18%">Mula </th>
+<th width="18%">Akhir </th>
+<th width="10%">Lokasi</th>
 <th width="12%">Action</th>
 <th width="40%">Kehadiran</th>
 
@@ -29,8 +29,8 @@
 <tr>
 <td >{{ $tempahans->firstItem() + $i }}</td>
 <td>{{  $tempahan->pendaftaran->program }}</td>
-<td>{{  $tempahan->pendaftaran->tarikh_mula }} </td>
-<td>{{  $tempahan->pendaftaran->masa_mula }}</td>
+<td> {{ date("g:ia\, jS M Y", strtotime($tempahan->pendaftaran->masa_mula)) }}</td>
+<td>  {{date("g:ia\, jS M Y", strtotime($tempahan->pendaftaran->masa_akhir)) }}</td>
 <td>{{  $tempahan->pendaftaran->lokasi }}</td>
 <td>
 

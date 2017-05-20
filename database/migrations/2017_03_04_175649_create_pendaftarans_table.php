@@ -18,10 +18,8 @@ class CreatePendaftaransTable extends Migration
             $table->string('penganjur');
             $table->string('program');
             $table->string('penerangan_program')->nullable();
-            $table->date('tarikh_mula');
-            $table->date('tarikh_akhir');
-            $table->time('masa_mula');
-            $table->time('masa_akhir');
+            $table->timestamp('masa_mula');
+            $table->timestamp('masa_akhir')->nullable();
             $table->string('lokasi');
             $table->string('kump_sasaran');
             $table->string('kos');

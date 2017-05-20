@@ -21,11 +21,9 @@
                 <hr>
                 <!-- <h1>{{ $pendaftaran->program }}</h1> -->
                 <p> Penganjur  :   {{ $pendaftaran->penganjur }}</p>
-                <p>Penerangan Program  :   {{ $pendaftaran->penerangan_program }}</p>
-                <p> Tarikh Mula  :   {{ $pendaftaran->tarikh_mula }}</p>
-                <p> Tarikh Akhir  :   {{ $pendaftaran->tarikh_akhir }}</p>
-                <p> Masa Mula  :   {{ $pendaftaran->masa_mula }}</p>
-                <p> Masa Akhir  :   {{ $pendaftaran->masa_akhir }}</p>
+                <p>Penerangan Program  :   {{ $pendaftaran->penerangan_program }} </p>
+                <p> Tarikh & Masa Mula : {{ date("g:ia\, jS M Y", strtotime($pendaftaran->masa_mula)) }}</p>
+                <p> Tarikh & Masa Akhir : {{date("g:ia\, jS M Y", strtotime($pendaftaran->masa_akhir)) }}</p>
                 <p>Lokasi  :   {{ $pendaftaran->lokasi }}</p>
                 <p>Kupulan Sasaran  :   {{ $pendaftaran->kump_sasaran }}</p>
                 <p>Kos  :   {{ $pendaftaran->kos }}</p>
