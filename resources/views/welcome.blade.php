@@ -17,7 +17,7 @@
 
 </style>
 
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('content')
 <!---728x90--->
 <!-- start slider -->

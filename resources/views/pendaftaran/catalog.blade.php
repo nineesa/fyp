@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('content')
 
 <div class="panel panel-default">
@@ -17,7 +17,7 @@
                           <br>
                           <p> Penganjur  :  {{ $pendaftaran->penganjur }}</p>
                           <p>  {{ date("g:ia\, jS M Y", strtotime($pendaftaran->masa_mula)) }}</p>
-					                <p>  {{date("g:ia\, jS M Y", strtotime($pendaftaran->masa_akhir)) }}</p> 
+					                <p>  {{date("g:ia\, jS M Y", strtotime($pendaftaran->masa_akhir)) }}</p>
 
                           <a href="{{ url('catalog', $pendaftaran->id) }}" class="btn btn-primary">Perinci</a>
                           <br><br>

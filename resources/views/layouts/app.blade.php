@@ -8,17 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
+    <meta name="description" content="">
+    <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+      <link rel="icon" href="{{ url('/') }}/_asset/favicon.png">
 
     <title>{{ config('app.name', 'e-Latihan') }}</title>
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{('/daterangepicker.css') }}" />
 
+    <link rel="stylesheet" type="text/css" href="{{('/daterangepicker.css') }}" />
+    <link href="{{ url('_asset/fullcalendar') }}/fullcalendar.min.css" rel="stylesheet">
+    <link href="{{ url('_asset/fullcalendar') }}/fullcalendar.css " rel='stylesheet'>
     <script src='lib/jquery.min.js'></script>
     <script src='lib/moment.min.js'></script>
-  <script type="text/javascript" src="/moment.min.js"></script>
+      <link href="{{ url('_asset/fullcalendar') }}/fullcalendar.js " rel='stylesheet'>
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -29,30 +34,11 @@
 </head>
 <body>
 
-  <div class="header_bg" >
-<div class="container">
 
-	<div class="row header">
-		<div class="logo navbar-left">
-      <br>
-        <!-- <img src="images/VV.jpg"  width="1200" height="20%" alt="" class="img-responsive"> -->
-      <!-- <h1><a href="{{ url('/') }}">e-Latihan </a></h1> -->
-		</div>
-		<div class="h_search navbar-right">
-			<form>
-        <br>
-        <!-- <img src="images/logoUKM.png"  width="250" height="70" alt="" class="img-responsive"> -->
-				<!-- <input type="text" class="text" value="Enter text here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter text here';}">
-				<input type="submit" value="search"> -->
-			</form>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-  <br>
 
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
-            <div class="container" style="background-color:powderblue;">
+            <div class="container" >
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -80,27 +66,27 @@
 
                         <li><a href="{{ url('/calendar') }}">Kalender</a></li>
 
-                        <li class="dropdown" style="background-color:powderblue;">
+                        <li class="dropdown" >
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pengguna<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu" style="background-color:powderblue;">
+                            <ul class="dropdown-menu" role="menu" >
                                 <li>
                                     <a href="{{ url('/tempahan') }}">Tempahan</a></li>
                                     </ul>
 
 
 
-                        <li class="dropdown" style="background-color:powderblue;">
+                        <li class="dropdown" >
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Penganjur <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu" style="background-color:powderblue;">
+                            <ul class="dropdown-menu" role="menu" >
                                 <li><a href="{{ url('/pendaftaran') }}">Pendaftaran Latihan</a></li>
                                 <li><a href="{{ url('/listalltempahan') }}">Senarai Tempahan</a></li>
                                     </ul>
 </li>
 
 
-                        <li class="dropdown" style="background-color:powderblue;">
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pentadbir <span class="caret"></span></a>
-                              <ul class="dropdown-menu" role="menu" style="background-color:powderblue;">
+                              <ul class="dropdown-menu" role="menu" >
 
                                     <li><a href="{{ url('/listLatihan') }}">Pengesahan</a></li>
                                     <li><a href="{{ url('/janalaporan') }}">Laporan</a></li>
@@ -115,12 +101,12 @@
                             <li><a href="{{ route('login') }}">Log Masuk</a></li>
                             <li><a href="{{ route('register') }}">Daftar Akaun</a></li>
                         @else
-                            <li class="dropdown" style="background-color:powderblue;">
+                            <li class="dropdown" >
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu" role="menu" style="background-color:powderblue;">
+                                <ul class="dropdown-menu" role="menu" >
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
