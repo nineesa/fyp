@@ -182,14 +182,15 @@ class TempahansController extends Controller
     public function janalaporan()
     {
       $chart = Charts::database(Pendaftaran::all(), 'bar', 'highcharts')
-      ->title("Jumlah Program Latihan Yang Didaftarkan Setiap Bulan")
-      ->elementLabel("Total")
+      ->title("Bilangan Program Setiap Bulan")
+      ->dateColumn('masa_mula')
+      ->elementLabel("Program")
       ->dimensions(900, 500)
       ->responsive(false)
       ->groupByMonth('2017', true);
 
       $char = Charts::database(Tempahan::all(), 'bar', 'highcharts')
-        ->title("Jumlah Tempahan Latihan Setiap Bulan")
+      ->title("Jumlah Tempahan Latihan Setiap Bulan")
       ->elementLabel("Total")
       ->dimensions(900, 500)
       ->responsive(false)

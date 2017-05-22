@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="panel panel-default">
-<div class="panel-heading">
+<div class="panel-heading" style="background-color:powderblue;">
 <h2>Permohonan Latihan<a href="{{ url('/pendaftaran/create') }}" class="btn btn-success pull-right" role="button">Borang Permohonan Latihan</a></h2>
 </div>
 <div class="panel-body">

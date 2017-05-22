@@ -1,36 +1,76 @@
-<style>
-	.panel-heading{
-		background: url('../images/b.jpg') no-repeat;
-		background-size: 100%;
-	  height: 350px;
-		/*align-items: center;
-		align-items: center;
- justify-content: center*/
-	}
-		h2{
-			font-family: 'open_sansregular';
-			background: #F0F8FF;
-			color: #ffffff;
-			text-align: center;
 
-		}
 
 </style>
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.mySlides {display:none;}
+</style>
 @extends('layouts.app2')
 @section('content')
 <!---728x90--->
 <!-- start slider -->
 
-									<div class="panel panel-default">
+									<!-- <div class="panel panel-default">
 										<div class="panel-heading">
 											<h2>Portal Pengurusan Latihan UKM</h2>
 											<p><span class="hide_text"> </span></p>
-											<!-- <h3 class="da-link"><a href="single-page.html" class="fa-btn btn-1 btn-1e">view more</a></h3> -->
+
 										</div>
-									</div>
+									</div> -->
+
+									<div class="w3-content w3-display-container">
+
+	<div class="w3-display-container mySlides">
+	  <img src="../images/b.jpg" style="width:100%">
+	  <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-sand">
+	    PORTAL PENGURUSAN LATIHAN UKM (e-Latihan)
+	  </div>
+	</div>
+
+	<div class="w3-display-container mySlides">
+	  <img src="../images/b.jpg" style="width:100%">
+	  <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-pale-yellow">
+	    Northern Lights, Norway
+	  </div>
+	</div>
+
+	<div class="w3-display-container mySlides">
+	  <img src="../images/b.jpg" style="width:100%">
+	  <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-light-gray">
+	    Beautiful Mountains
+	  </div>
+	</div>
+
+	<div class="w3-display-container mySlides">
+	  <img src="../images/b.jpg" style="width:100%">
+	  <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
+	    The Rain Forest
+	  </div>
+	</div>
+
+	<div class="w3-display-container mySlides">
+	  <img src="../images/b.jpg" style="width:100%">
+	  <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
+	    Mountains!
+	  </div>
 
 
+	<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
 
 
 	</div>

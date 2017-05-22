@@ -66,13 +66,16 @@
 
                 <li><a href="{{ url('/calendar') }}">Kalender</a></li>
 
+              
+
+
                 <li class="dropdown" >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pengguna<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu" >
                         <li>
                             <a href="{{ url('/tempahan') }}">Tempahan</a></li>
                             </ul>
-
+</li>
 
 
                 <li class="dropdown">
@@ -89,9 +92,10 @@
                       <ul class="dropdown-menu" role="menu" >
 
                             <li><a href="{{ url('/listLatihan') }}">Pengesahan</a></li>
-
+                            <li><a href="{{ url('/janalaporan') }}">Laporan</a></li>
                             </ul>
                             </li>
+
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
@@ -110,7 +114,7 @@
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                    Logout
+                                    Log Keluar
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -119,10 +123,12 @@
                             </li>
                         </ul>
                     </li>
-                @endif
+
+            @endif
             </ul>
         </div>
     </div>
+
 </nav>
 
 <div class="container">
@@ -199,7 +205,21 @@ $('#destroy-modal').modal({ show: true });
  	<!-- <script src="{{ url('_asset/fullcalendar/lib') }}/moment.min.js"></script> -->
   <script type="text/javascript" src="{{ ('/moment.min.js') }}"></script>
    <script type="text/javascript" src="{{ ('/daterangepicker.js') }}"></script>
-
+   <script type="text/javascript">
+   $(function () {
+       $('input[name="time"]').daterangepicker({
+           "minDate": moment('<?php echo date('Y-m-d G')?>'),
+           "timePicker": true,
+           "timePicker24Hour": true,
+           "timePickerIncrement": 15,
+           "autoApply": true,
+           "locale": {
+               "format": "DD/MM/YYYY HH:mm:ss",
+               "separator": " - ",
+           }
+       });
+   });
+   </script>
 	@yield('js')
 
   </body>

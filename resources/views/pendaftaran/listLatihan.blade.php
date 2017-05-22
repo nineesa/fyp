@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="panel panel-default">
-<div class="panel-heading">
+<div class="panel-heading" style="background-color:powderblue;">
 <h2>Senarai Permohonan Latihan</h2>
 </div>
 <div class="panel-body">

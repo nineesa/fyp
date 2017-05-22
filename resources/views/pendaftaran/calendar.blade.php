@@ -1,13 +1,6 @@
 @extends('layouts.app2')
 @section('content')
 
-<div class="row">
-	<div clss="col-lg-12">
-		<ol class="breadcrumb">
-			<li class="active">You are here: Home</li>
-		</ol>
-	</div>
-</div>
 
 <div class="row">
 	<div class="col-lg-12">
