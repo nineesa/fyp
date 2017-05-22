@@ -18,11 +18,11 @@
 										</div>
 									</div> -->
 
-									<div class="w3-content w3-display-container">
+		<div class="w3-content w3-display-container">
 
 	<div class="w3-display-container mySlides">
 	  <img src="../images/b.jpg" style="width:100%">
-	  <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-sand">
+	  <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
 	    PORTAL PENGURUSAN LATIHAN UKM (e-Latihan)
 	  </div>
 	</div>
@@ -30,7 +30,9 @@
 	<div class="w3-display-container mySlides">
 	  <img src="../images/b.jpg" style="width:100%">
 	  <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-pale-yellow">
-	    Northern Lights, Norway
+			<h3>Place to achieve good results</h3>
+ 							<h4> Make the best choice for your education</h4>
+
 	  </div>
 	</div>
 
@@ -54,7 +56,9 @@
 	    Mountains!
 	  </div>
 
-
+		<div class="w3-container">
+		  <p>A car is a wheeled, self-powered motor vehicle used for transportation. Most definitions of the term specify that cars are designed to run primarily on roads. (Wikipedia)</p>
+		</div>
 	<script>
 var myIndex = 0;
 carousel();
@@ -68,7 +72,8 @@ function carousel() {
     myIndex++;
     if (myIndex > x.length) {myIndex = 1}
     x[myIndex-1].style.display = "block";
-    setTimeout(carousel, 2000); // Change image every 2 seconds
+    setTimeout(carousel, 2000);
+		 // Change image every 2 seconds
 }
 </script>
 
@@ -80,7 +85,9 @@ function carousel() {
 	<div class="container">
 		<div class="row  footer">
 			<div class="copy text-center">
+				<br>
 				<p class="link"><span>Hakcipta Terpelihara &copy; 2017 | e-Latihan UKM.</a></span></p>
+
 			</div>
 		</div>
 	</div>

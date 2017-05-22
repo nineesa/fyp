@@ -83,23 +83,20 @@ method="POST" enctype="multipart/form-data">
                         </div>
 
 
+
                         <div class="form-group">
-                        @if($errors->has('time')) has-error @endif
-                        <label  for="time" class="col-md-4 control-label">Masa</label>
-                        <div class="input-group" class="col-md-8">
+                                  <label class="col-md-4 control-label">Tarikh & Masa Mula</label>
+                                <div class="col-md-8">
+                                    <td>{{ date("g:ia\, jS M Y", strtotime($pendaftaran->masa_mula)) }}</td>
+                                </div>
+                            </div>
 
-                        <input type="text" class="form-control" name="time" placeholder="Select your time" value="{{$pendaftaran->masa_mula. ' - ' . $pendaftaran->masa_akhir }}" readonly >
-                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                        </div>
-                        @if ($errors->has('time'))
-                        <p class="help-block"><span class="glyphicon glyphicon-exclamation-sign"></span>
-                        {{ $errors->first('time') }}
-                        </p>
-                        @endif
-                        </div>
-
+                            <div class="form-group">
+                                      <label class="col-md-4 control-label">Tarikh & Masa Akhir</label>
+                                    <div class="col-md-8">
+                                        <td>{{ date("g:ia\, jS M Y", strtotime($pendaftaran->masa_akhir)) }}</td>
+                                    </div>
+                                </div>
 
 <div class="form-group{{ $errors->has('lokasi') ? ' has-error' : '' }}">
 <label for="lokasi" class="col-md-4 control-label">Lokasi</label>

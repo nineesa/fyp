@@ -30,7 +30,7 @@ class PendaftaransController extends Controller
      public function calendar()
        {
          $data = [
-         			
+
          			'pendaftarans'	 => Pendaftaran::orderBy('masa_mula')->get(),
          		];
 
@@ -172,26 +172,10 @@ class PendaftaransController extends Controller
 
       public function simpan(Request $request, $id)
       {
-        $this->validate($request, ['penganjur' => 'required',]);
-        $this->validate($request, ['program' => 'required',]);
-        $this->validate($request, ['penerangan_program']);
-        $this->validate($request, ['time' => 'required',]);
-        $this->validate($request, ['lokasi' => 'required',]);
-        $this->validate($request, ['kump_sasaran' => 'required',]);
-        $this->validate($request, ['kos' => 'required',]);
-        $this->validate($request, ['max_peserta' => 'required',]);
+
         $this->validate($request, ['status']);
           $time = explode(" - ", $request->input('time'));
         $pendaftaran = Pendaftaran::findOrFail($id);;
-        $pendaftaran->penganjur = $request->penganjur;
-        $pendaftaran->program = $request->program;
-        $pendaftaran->penerangan_program = $request->penerangan_program;
-        $pendaftaran->masa_mula = $this->change_date_format($time[0]);
-        $pendaftaran->masa_akhir = $this->change_date_format($time[1]);
-        $pendaftaran->lokasi = $request->lokasi;
-        $pendaftaran->kump_sasaran = $request->kump_sasaran;
-        $pendaftaran->kos = $request->kos;
-        $pendaftaran->max_peserta = $request->max_peserta;
         $pendaftaran->status = $request->status;
         $pendaftaran->save();
         return redirect()->action('PendaftaransController@listLatihan')->withMessage('Program telah disahkan');

@@ -12,6 +12,7 @@
       <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ url('/') }}/_asset/favicon.png">
 
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     <title>{{ config('app.name') }} - {{ $page_title or ''}}</title>
 
     <!-- Bootstrap core CSS -->
@@ -62,39 +63,13 @@
 
                 <li><a href="{{ url('/') }}">Halaman Utama</a></li>
 
-                <li><a href="{{ url('/catalog') }}">Jadual</a></li>
+                <li><a href="{{ url('/catalog') }}">Jadual Latihan</a></li>
 
-                <li><a href="{{ url('/calendar') }}">Kalender</a></li>
-
-              
+                <li><a href="{{ url('/calendar') }}">Kalender Latihan</a></li>
 
 
-                <li class="dropdown" >
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pengguna<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu" >
-                        <li>
-                            <a href="{{ url('/tempahan') }}">Tempahan</a></li>
-                            </ul>
-</li>
 
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Penganjur <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu" >
-                        <li><a href="{{ url('/pendaftaran') }}">Pendaftaran Latihan</a></li>
-                        <li><a href="{{ url('/listalltempahan') }}">Senarai Tempahan</a></li>
-                            </ul>
-</li>
-
-
-                <li class="dropdown" >
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pentadbir <span class="caret"></span></a>
-                      <ul class="dropdown-menu" role="menu" >
-
-                            <li><a href="{{ url('/listLatihan') }}">Pengesahan</a></li>
-                            <li><a href="{{ url('/janalaporan') }}">Laporan</a></li>
-                            </ul>
-                            </li>
 
 
             <!-- Right Side Of Navbar -->
@@ -103,7 +78,10 @@
                 @if (Auth::guest())
                     <li><a href="{{ route('login') }}">Log Masuk</a></li>
                     <li><a href="{{ route('register') }}">Daftar Akaun</a></li>
-                @else
+
+                @elseif (Auth::user()->role == 'pengguna')
+                <li><a href="{{ url('/tempahan') }}">Tempahan Latihan</a></li>
+
                     <li class="dropdown" >
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -123,7 +101,59 @@
                             </li>
                         </ul>
                     </li>
+</li>
 
+  @elseif (Auth::user()->role == 'penganjur')
+  <li><a href="{{ url('/pendaftaran') }}">Daftar Latihan</a></li>
+  <li><a href="{{ url('/listalltempahan') }}">Senarai Tempahan Latihan</a></li>
+
+
+                            <li class="dropdown" >
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu" >
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Log Keluar
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+        </li>
+
+        @elseif (Auth::user()->role == 'pentadbir')
+        <li><a href="{{ url('/listLatihan') }}">Pengesahan Latihan</a></li>
+                            <li><a href="{{ url('/janalaporan') }}">Laporan Latihan</a></li>
+                            <li class="dropdown" >
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu" >
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Log Keluar
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+        </li>
+
+        @else
             @endif
             </ul>
         </div>
@@ -196,9 +226,7 @@ $('#destroy-modal').modal({ show: true });
 
     <!-- /container -->
 
-	<footer class="footer">
 
-	</footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
