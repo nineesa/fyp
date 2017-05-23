@@ -122,7 +122,7 @@ class TempahansController extends Controller
      {
          $this->validate($request, ['kehadiran']);
          $tempahan=Tempahan::findOrFail($id);
-         $tempahan->user_id=Auth::user()->id;
+        //  $tempahan->user_id=Auth::user()->id;
          $tempahan->kehadiran = $request->kehadiran;
          $tempahan->save();
 

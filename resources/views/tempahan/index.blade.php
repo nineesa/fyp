@@ -42,11 +42,9 @@
     {{ csrf_field() }}
   @if ($tempahan->kehadiran == 'Belum Disahkan')
   <button name="kehadiran" id="kehadiran" type="submit" class="btn btn-success btn-sm" value="Hadir">Hadir</button>
-
   <button name="kehadiran" id="kehadiran" type="submit" class="btn btn-danger btn-sm" value="Tidak Hadir">Tidak Hadir</button>
     <input type="hidden" name="tempahan_id" value="{{ $tempahan->id }}">
   </td>
-
   @endif
 @if ($tempahan->kehadiran == 'Hadir')
 {{$tempahan->kehadiran }}

@@ -32,14 +32,19 @@ Route::get('/api', function() {
   });
   Route::get('/catalog', 'PendaftaransController@catalog');
   Route::get('/catalog/{pendaftaran}', 'PendaftaransController@show');
+
 Auth::routes();
 
 
 Route::group(['middleware' =>  ['auth', 'pengguna']], function() {
   Route::post('/tempahan', 'TempahansController@store' );
   Route::get('/tempahan', 'TempahansController@index');
-  Route::get('/tempahan/{tempahan}', 'TempahansController@show');
+  
+  Route::get('/tempahan/{tempahan}/viewdetail', 'TempahansController@show');
+
   Route::post('/tempahan/{tempahan}/simpan', 'TempahansController@simpan');
+
+  Route::get('/tempahan/{tempahan}/viewdetail', 'TempahansController@show');
 
 
 });
@@ -65,8 +70,7 @@ Route::group(['middleware' =>  ['auth', 'penganjur']], function() {
   Route::get('/listalltempahan', 'TempahansController@listalltempahan');
   Route::get('/cetakpeserta', 'TempahansController@cetakpeserta');
   Route::get('/peserta', 'TempahansController@peserta');
-  Route::get('/tempahan/{tempahan}/viewdetail', 'TempahansController@show');
-  Route::patch('/tempahan', 'TempahansController@simpan');
+
   Route::get('/tempahan/{program}/peserta', 'TempahansController@peserta')->name('tempahan.peserta');
   Route::get('/cetakpeserta/{program}', 'TempahansController@cetakpeserta')->name('tempahan.cetakpeserta');
   Route::get('/all', 'TempahansController@all');
